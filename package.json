@@ -10,7 +10,7 @@
   "main": "server.js",
   "dependencies": {
     "bootstrap": "^4.5.0",
-    "node-static": "^0.7.11",
+    "http-server": "^0.12.3",
     "websocket": "^1.0.31",
     "ws": "^7.3.0"
   }
