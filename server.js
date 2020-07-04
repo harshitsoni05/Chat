@@ -58,7 +58,7 @@ if (argv.h || argv.help) {
   process.exit();
 }
 
-var port = argv.p || argv.port || parseInt(process.env.PORT, 10),
+var port = argv.p || argv.port || parseInt(process.env.PORT, 10) || process.env.PORT || 5000,
     host = argv.a || '0.0.0.0',
     ssl = argv.S || argv.ssl,
     proxy = argv.P || argv.proxy,
