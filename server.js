@@ -223,7 +223,7 @@ process.on('SIGTERM', function () {
 var WebSocketServer = require('ws').Server;
  
 //creating a websocket server at port 9090 
-var wss = new WebSocketServer({port: process.env.PORT || 3000}); 
+var wss = new WebSocketServer({port: 9090}); 
 
 //all connected to the server users 
 var users = {};
