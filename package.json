@@ -10,11 +10,8 @@
   "main": "./node_modules/node-static/bin/cli.js",
   "dependencies": {
     "bootstrap": "^4.5.0",
+    "http-server": "^0.12.3",
     "websocket": "^1.0.31",
-    "ws": "^7.3.0",
-    "http-server":"0.12.3"
-  }
-"engines": {
-    "node": "12.x"
+    "ws": "^7.3.0"
   }
 }
