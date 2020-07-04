@@ -1,11 +1,10 @@
-
 #!/usr/bin/env node
 
 'use strict';
 
 var colors     = require('colors/safe'),
     os         = require('os'),
-    httpServer = require('../lib/http-server'),
+    httpServer = require('http-server'),
     portfinder = require('portfinder'),
     opener     = require('opener'),
     fs         = require('fs'),

@@ -5,9 +5,9 @@
   "author": "Author",
   "license": "BSD-2-Clause",
   "scripts": {
-    "start": "node ./node_modules/node-static/bin/cli.js"
+    "start": "node server.js"
   },
-  "main": "./node_modules/node-static/bin/cli.js",
+  "main": "server.js",
   "dependencies": {
     "bootstrap": "^4.5.0",
     "http-server": "^0.12.3",
