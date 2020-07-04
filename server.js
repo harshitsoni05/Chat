@@ -103,7 +103,7 @@ if (version) {
 }
 
 if (!port) {
-  portfinder.basePort = 8080;
+  portfinder.basePort = 5000;
   portfinder.getPort(function (err, port) {
     if (err) { throw err; }
     listen(port);
