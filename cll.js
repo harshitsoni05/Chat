@@ -3,7 +3,8 @@ var name;
 var connectedUser; 
 
 //connecting to our signaling server 
-var conn = new WebSocket('wss://172.18.247.206:43560'); 
+var HOST = location.origin.replace(/^http/, 'ws')
+var conn = new WebSocket(HOST);; 
 
 conn.onopen = function () { 
    console.log("Connected to the signaling server");
