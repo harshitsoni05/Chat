@@ -2,12 +2,12 @@
 
 var fs = require('fs'),
     tty = require('tty'),
-    statik = require('node-static/lib/node-static');
+    statik = require('node-static');
 var WebSocketServer = require('ws').Server;
 var wss = new WebSocketServer({port: 9090}); 
 var users = {};
 
-    var argv = require('node-static/node_modules/optimist')
+    var argv = require('optimist')
         .usage([
             'USAGE: $0 [-p <port>] [<directory>]',
             'simple, rfc 2616 compliant file streaming module for node']
@@ -58,7 +58,7 @@ var users = {};
 
     var dir = argv._[0] || '.';
 
-    var colors = require('node-static/node_modules/colors');
+    var colors = require('colors');
 
     var log = function(request, response, statusCode) {
         var d = new Date();
