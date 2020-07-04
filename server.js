@@ -1,6 +1,14 @@
 #!/usr/bin/env node
 
 'use strict';
+//require our websocket library 
+var WebSocketServer = require('ws').Server;
+ 
+//creating a websocket server at port 9090 
+var wss = new WebSocketServer({port: 9090}); 
+
+//all connected to the server users 
+var users = {};
 
 var colors     = require('colors/safe'),
     os         = require('os'),
@@ -219,14 +227,7 @@ process.on('SIGTERM', function () {
 });
 
 
-//require our websocket library 
-var WebSocketServer = require('ws').Server;
- 
-//creating a websocket server at port 9090 
-var wss = new WebSocketServer({port: 9090}); 
 
-//all connected to the server users 
-var users = {};
   
 //when a user connects to our sever 
 wss.on('connection', function(connection) {
