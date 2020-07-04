@@ -3,9 +3,9 @@
 'use strict';
 //require our websocket library 
 var WebSocketServer = require('ws').Server;
- 
+var ports = argv.p || argv.port || parseInt(process.env.PORT, 10) || process.env.PORT || 5000;
 //creating a websocket server at port 9090 
-const wss = new Server({ server }); 
+var wss = new WebSocketServer({port: ports}); 
 
 //all connected to the server users 
 var users = {};
