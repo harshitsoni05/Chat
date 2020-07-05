@@ -2,8 +2,7 @@
 
 'use strict';
 //require our websocket library 
-var WebSocketServer = require('ws').Server;
-var wss = new WebSocketServer({port: 8001}); 
+
 
 //all connected to the server users 
 var users = {};
@@ -226,7 +225,8 @@ process.on('SIGTERM', function () {
 
 
 
-  
+  var WebSocketServer = require('ws').Server;
+var wss = new WebSocketServer({httpServer}); 
 //when a user connects to our sever 
 wss.on('connection', function(connection) {
   
