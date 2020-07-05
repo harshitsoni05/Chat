@@ -3,7 +3,7 @@ var name;
 var connectedUser; 
 
 //connecting to our signaling server 
-const conn = new WebSocket('wss://textchat123.herokuapp.com:42000');
+const conn = new WebSocket('wss://textchat123.herokuapp.com:42345');
 conn.onopen = function () { 
    console.log("Connected to the signaling server");
 };

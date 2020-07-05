@@ -226,7 +226,7 @@ process.on('SIGTERM', function () {
 
 
   const WebSocketServer = require('ws').Server;
-const wss = new WebSocketServer({port : 42000}); 
+const wss = new WebSocketServer({port : 42345}); 
 //when a user connects to our sever 
 wss.on('connection', function(connection) {
   
