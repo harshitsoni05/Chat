@@ -2,9 +2,15 @@
 
 'use strict';
 //require our websocket library 
-const { Server } = require('ws');
-
-const wss = new Server({ server });
+const fs = require('fs');
+const https = require('https');
+const WebSocket = require('ws');
+ 
+const server = https.createServer({
+  cert: fs.readFileSync('server.crt'),
+  key: fs.readFileSync('server.key')
+});
+const wss = new WebSocket.Server({ server });
 
 //all connected to the server users 
 var users = {};
