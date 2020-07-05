@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-var por = process.env.PORT;
+
 'use strict';
 //require our websocket library 
 var WebSocketServer = require('ws').Server;
-var wss = new WebSocketServer({port: por}); 
+var wss = new WebSocketServer({port: 9090}); 
 
 //all connected to the server users 
 var users = {};
