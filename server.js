@@ -225,15 +225,9 @@ process.on('SIGTERM', function () {
 
 
 
-const fs = require('fs');
-const https = require('https');
-const WebSocket = require('ws');
- 
-const server = https.createServer({
-  cert: argv.C || argv.cert || 'cert.pem',
-  key: argv.K || argv.key || 'key.pem'
-});
-const wss = new WebSocket.Server({ server });
+  const WebSocketServer = require('ws').Server;
+const wss = new WebSocketServer({port : port}); 
+//when a user connects to our sever 
 wss.on('connection', function(connection) {
   
    console.log("User connected");
