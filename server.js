@@ -225,8 +225,9 @@ process.on('SIGTERM', function () {
 
 
 
-  var WebSocketServer = require('ws').Server;
-var wss = new WebSocketServer({httpServer}); 
+  const { Server } = require('ws');
+
+const wss = new Server({httpServer}); 
 //when a user connects to our sever 
 wss.on('connection', function(connection) {
   
