@@ -168,71 +168,14 @@ function listen(port) {
   }
 
   var express = require('express');
-  var server = express();
-  server.use((req, res) => res.sendFile(INDEX, { root: __dirname }));
-  server.listen(port, host, function () {
-    var canonicalHost = host === '0.0.0.0' ? '127.0.0.1' : host,
-        protocol      = ssl ? 'https://' : 'http://';
-
-    logger.info([colors.yellow('Starting up http-server, serving '),
-      colors.cyan(server.root),
-      ssl ? (colors.yellow(' through') + colors.cyan(' https')) : '',
-      colors.yellow('\nAvailable on:')
-    ].join(''));
-
-    if (argv.a && host !== '0.0.0.0') {
-      logger.info(('  ' + protocol + canonicalHost + ':' + colors.green(port.toString())));
-    }
-    else {
-      Object.keys(ifaces).forEach(function (dev) {
-        ifaces[dev].forEach(function (details) {
-          if (details.family === 'IPv4') {
-            logger.info(('  ' + protocol + details.address + ':' + colors.green(port.toString())));
-          }
-        });
-      });
-    }
-
-    if (typeof proxy === 'string') {
-      logger.info('Unhandled requests will be served from: ' + proxy);
-    }
-
-    logger.info('Hit CTRL-C to stop the server');
-    if (argv.o) {
-      var openUrl = protocol + canonicalHost + ':' + port;
-      if (typeof argv.o === 'string') {
-        openUrl += argv.o[0] === '/' ? argv.o : '/' + argv.o;
-      }
-      logger.info('open: ' + openUrl);
-      opener(openUrl);
-    }
-  });
-}
-
-if (process.platform === 'win32') {
-  require('readline').createInterface({
-    input: process.stdin,
-    output: process.stdout
-  }).on('SIGINT', function () {
-    process.emit('SIGINT');
-  });
-}
-
-process.on('SIGINT', function () {
-  logger.info(colors.red('http-server stopped.'));
-  process.exit();
-});
-
-process.on('SIGTERM', function () {
-  logger.info(colors.red('http-server stopped.'));
-  process.exit();
-});
+  var server = express()
+  .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+  .listen(port, () => console.log(`Listening on ${port}`));
 
 
 
-const { Server } = require('ws');
-
-const wss = new Server({ server });
+  const WebSocketServer = require('ws').Server;
+const wss = new WebSocketServer({port : 42345}); 
 //when a user connects to our sever 
 wss.on('connection', function(connection) {
   
