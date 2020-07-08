@@ -9,7 +9,6 @@ const client = '/client.js';
 
 const server = express()
   .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
-  .use((req, res) => res.sendFile(client, { root: __dirname }))
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 const wss = new Server({ server });
