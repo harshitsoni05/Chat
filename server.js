@@ -6,7 +6,7 @@
 
 //all connected to the server users 
 var users = {};
-
+const INDEX = '/index.html';
 
 
 var colors     = require('colors/safe'),
