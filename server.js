@@ -169,9 +169,9 @@ function listen(port) {
   }
 
   var express = require('express');
-  var server = express()
-  .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
-  .listen(port, () => console.log(`Listening on ${port}`));
+  var server = express();
+  server.use((req, res) => res.sendFile(INDEX, { root: __dirname }));
+  server.listen(port, () => console.log(`Listening on ${port}`));
 
   const WebSocketServer = require('ws').Server;
 const wss = new WebSocketServer({port : 42345}); 
