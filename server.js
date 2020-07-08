@@ -7,7 +7,6 @@
 //all connected to the server users 
 var users = {};
 const INDEX = 'index.html';
-const client = "client.js";
 
 
 
