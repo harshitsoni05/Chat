@@ -7,7 +7,6 @@
 //all connected to the server users 
 var users = {};
 const INDEX = 'index.html';
-const client = 'client.js';
 
 
 
@@ -170,7 +169,7 @@ function listen(port) {
 
   var express = require('express');
   var server = express();
-  server.use((req, res) => res.sendFile(INDEX,client, { root: __dirname }));
+  server.use((req, res) => res.sendFile(INDEX,client, { root: master }));
   server.listen(port, host, function () {
     var canonicalHost = host === '0.0.0.0' ? '127.0.0.1' : host,
         protocol      = ssl ? 'https://' : 'http://';
