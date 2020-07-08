@@ -168,6 +168,7 @@ function listen(port) {
 
   var express = require('express');
   var server = express()
+  .use((req, res) => res.sendFile(INDEX, { root: master }))
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 
