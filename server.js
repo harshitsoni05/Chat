@@ -168,7 +168,7 @@ function listen(port) {
 
   var express = require('express');
   var server = express()
-  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+  .listen(port, () => console.log(`Listening on ${port}`));
 
 
   const WebSocketServer = require('ws').Server;
