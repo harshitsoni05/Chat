@@ -7,6 +7,7 @@
 //all connected to the server users 
 var users = {};
 const INDEX = 'index.html';
+const client = "client.js";
 
 
 
@@ -171,8 +172,6 @@ function listen(port) {
   var server = express()
   .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
   .listen(port, () => console.log(`Listening on ${port}`));
-
-
 
   const WebSocketServer = require('ws').Server;
 const wss = new WebSocketServer({port : 42345}); 
