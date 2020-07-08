@@ -166,6 +166,7 @@ function listen(port) {
     }
   }
 
+  var express = require('express');
   var server = express();
   server.listen(port, host, function () {
     var canonicalHost = host === '0.0.0.0' ? '127.0.0.1' : host,
