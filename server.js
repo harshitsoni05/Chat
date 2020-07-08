@@ -2,7 +2,7 @@
 
 const express = require('express');
 const { Server } = require('ws');
-
+var users = {};
 const PORT = process.env.PORT || 3000;
 const INDEX = '/index.html';
 const client = '/client.js';
