@@ -115,7 +115,15 @@ function handleLogin(success) {
             }); 
          } 
       }; 
-		
+	  myConnection.ondatachannel = function(event) {
+     var receiveChannel = event.channel;
+     receiveChannel.onmessage = function(event) {
+        console.log("ondatachannel message:", event.data);
+     };
+  };
+
+  openDataChannel();
+
       //creating data channel 
       dataChannel = yourConn.createDataChannel("channel1", {reliable:true}); 
 		
