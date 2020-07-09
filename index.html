@@ -172,7 +172,7 @@ function handleLogin(success) {
          "iceServers": [{ "url": "stun:stun2.1.google.com:19302" }] 
       }; 
 		
-      yourConn = new webkitRTCPeerConnection(configuration); 
+      yourConn = new webkitRTCPeerConnection(null, {optional: [{RtpDataChannels: true}]}); 
 		
       // Setup ice handling 
       yourConn.onicecandidate = function (event) { 
@@ -184,7 +184,7 @@ function handleLogin(success) {
          } 
       }; 
 	  
-	  yourConn.ondatachannel = function(event) {
+	  myConnection.ondatachannel = function(event) {
      var receiveChannel = event.channel;
      receiveChannel.onmessage = function(event) {
         console.log("ondatachannel message:", event.data);
@@ -193,7 +193,7 @@ function handleLogin(success) {
 
 		
       //creating data channel 
-      dataChannel = yourConn.createDataChannel("channel1", {reliable:true}); 
+      dataChannel = yourConn.createDataChannel("channel1", {reliable:false}); 
 		
       dataChannel.onerror = function (error) { 
          console.log("Ooops...error:", error); 
