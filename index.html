@@ -190,7 +190,7 @@ function handleLogin(success) {
         console.log("ondatachannel message:", event.data);
      };
   };
-yourConn.on('connect', () => {
+peer.on('connect', () => {
     console.log('I am connected now')
     peer.send('sending data blah blah')
   })
