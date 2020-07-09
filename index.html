@@ -184,7 +184,7 @@ function handleLogin(success) {
          } 
       }; 
 	  
-	  myConnection.ondatachannel = function(event) {
+	  yourConn.ondatachannel = function(event) {
      var receiveChannel = event.channel;
      receiveChannel.onmessage = function(event) {
         console.log("ondatachannel message:", event.data);
