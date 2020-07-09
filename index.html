@@ -169,7 +169,7 @@ function handleLogin(success) {
          "iceServers": [{ "url": "stun:stun2.1.google.com:19302" }] 
       }; 
 		
-      yourConn = new webkitRTCPeerConnection(null, {optional: [{RtpDataChannels: true}]}); 
+      yourConn = new webkitRTCPeerConnection(configuration, null); 
 		
       // Setup ice handling 
       yourConn.onicecandidate = function (event) { 
