@@ -3,6 +3,9 @@
    <head> 
       <title>WebRTC Text Demo</title> 
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	  
    </head>
  
@@ -169,7 +172,7 @@ function handleLogin(success) {
          "iceServers": [{ "url": "stun:stun2.1.google.com:19302" }] 
       }; 
 		
-      yourConn = new RTCPeerConnection({ iceServers: [ { urls: 'stun:stun.l.google.com:19302' } ] }); 
+      yourConn = new webkitRTCPeerConnection(configuration, {optional: [{RtpDataChannels: true}]}); 
 		
       // Setup ice handling 
       yourConn.onicecandidate = function (event) { 
@@ -187,7 +190,10 @@ function handleLogin(success) {
         console.log("ondatachannel message:", event.data);
      };
   };
-
+yourConn.on('connect', () => {
+    console.log('I am connected now')
+    peer.send('sending data blah blah')
+  })
 		
       //creating data channel 
       dataChannel = yourConn.createDataChannel("channel1", {reliable:false}); 
