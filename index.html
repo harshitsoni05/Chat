@@ -274,11 +274,6 @@ function handleLeave() {
    yourConn.onicecandidate = null; 
 };
  
- conn.on('connect', () => {
-    console.log('I am connected now')
-    peer.send('sending data blah blah')
-  })
- 
 //when user clicks the "send message" button 
 sendMsgBtn.addEventListener("click", function (event) { 
    var val = msgInput.value; 
