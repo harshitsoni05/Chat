@@ -241,11 +241,10 @@ class Chat {
         container.appendChild(HTML);
       }
     }
-	if (!shouldScroll) {
-    scrollToBottom();
-  }
+	
   scrollToBottom();
   }
+  scrollToBottom();
 }
 
 const messages = document.getElementById('msgContainer');
