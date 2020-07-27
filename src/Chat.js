@@ -242,9 +242,10 @@ class Chat {
       }
     }
 	mainPage.
-  }
-  
-  
+  }  
+}
+module.exports = Chat;
+
   const messages = document.getElementById('msgContainer');
 
 function appendMessage() {
@@ -274,6 +275,5 @@ scrollToBottom();
 
 setInterval(getMessages, 100);
   
-  
-}
-module.exports = Chat;
+
+
