@@ -241,11 +241,6 @@ class Chat {
         container.appendChild(HTML);
       }
     }
-	mainPage.
-  }  
+  }
 }
 module.exports = Chat;
-
-  
-
-
