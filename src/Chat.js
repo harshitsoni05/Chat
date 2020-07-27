@@ -194,7 +194,7 @@ class Chat {
     let HTML = document.createElement("div");
 
     if (direction === "left") {
-      ["has-text-left", "talk-bubble","tri-left","round","left-in", "left-aligned"].forEach((e) => HTML.classList.add(e));
+      ["has-text-left", "", ""].forEach((e) => HTML.classList.add(e));
       let html;
       const leftMsg = document.querySelectorAll(".left-aligned");
       const leftLastChild = leftMsg[leftMsg.length - 1];
@@ -217,9 +217,9 @@ class Chat {
           if (leftMsg.length == 0 || leftLastChild.textContent === `${user}: typing...`) {
             // remove typing child
             container.removeChild(leftLastChild);
-            html = `<div class="talktext"><span class="span"><strong>${user}: </strong></span><span class="span">${msg.msg}</span></div>`;
+            html = `<div class="talk-bubble tri-left round left-in"><div class="talktext"><span class="span"><strong>${user}: </strong></span><span class="span">${msg.msg}</span></div></div>`;
           } else {
-            html = `<div class="talktext"><span class="span"><strong>${user}: </strong></span><span class="span">${msg.msg}</span></div>`;
+            html = `<div class="talk-bubble tri-left round left-in"><div class="talktext"><span class="span"><strong>${user}: </strong></span><span class="span">${msg.msg}</span></div></div>`;
           }
           HTML.innerHTML = html;
           container.appendChild(HTML);
@@ -234,8 +234,8 @@ class Chat {
         };
         img.src = msg.img;
       } else {
-        ["has-text-right", "talk-bubble","tri-right","round","right-in", "right-aligned"].forEach((e) => HTML.classList.add(e));
-        HTML.innerHTML = `<div class="talktext"><span class="span">${msg.msg}</span></div>`;
+        ["has-text-right", "", ""].forEach((e) => HTML.classList.add(e));
+        HTML.innerHTML = `<div class="talk-bubble tri-right round right-in"><div class="talktext"><span class="span">${msg.msg}</span></div></div>`;
         container.appendChild(HTML);
       }
     }
