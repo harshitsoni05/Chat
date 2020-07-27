@@ -244,13 +244,11 @@ class Chat {
 	
   scrollToBottom();
   }
-  scrollToBottom();
 }
-
-const messages = document.getElementById('msgContainer');
 
 
 function scrollToBottom() {
+	const messages = document.getElementById('msgContainer');
   messages.scrollTop = messages.scrollHeight;
 }
 
