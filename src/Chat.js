@@ -244,13 +244,9 @@ class Chat {
   }
 }
 
-const messages = document.getElementById('mainPage');
+const messages = document.getElementById('msgContainer');
 
-function appendMessage() {
-	const message = document.getElementsByClassName('message')[0];
-  const newMessage = message.cloneNode(true);
-  messages.appendChild(newMessage);
-}
+
 
 function getMessages() {
 	// Prior to getting your messages.
@@ -258,7 +254,7 @@ function getMessages() {
   /*
    * Get your messages, we'll just simulate it by appending a new one syncronously.
    */
-  appendMessage();
+
   // After getting your messages.
   if (!shouldScroll) {
     scrollToBottom();
@@ -271,6 +267,6 @@ function scrollToBottom() {
 
 scrollToBottom();
 
-
+setInterval(getMessages, 100);
 
 module.exports = Chat;
