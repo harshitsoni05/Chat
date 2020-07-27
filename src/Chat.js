@@ -241,6 +241,7 @@ class Chat {
         container.appendChild(HTML);
       }
     }
+	getMessages();
   }
 }
 
@@ -267,6 +268,6 @@ function scrollToBottom() {
 
 scrollToBottom();
 
-setInterval(getMessages, 100);
+
 
 module.exports = Chat;
