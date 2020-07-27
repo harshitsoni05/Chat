@@ -91,6 +91,7 @@ form button {
 #msgContainer {
   line-height: 1.5;
   margin-bottom: 1rem;
+  overflow-y:auto;
 }
 #notification {
   position: fixed;
