@@ -59,10 +59,10 @@ form button {
   -o-border-radius: 5px;
 }
 .field.has-addons {
-left: 2px;
-    right: 2px;
+left: 4px;
+    right: 1px;
     position: fixed;
-    bottom: 4px;
+    bottom: 8px;
     width: 100%;
 }
 .add-columns,

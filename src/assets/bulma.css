@@ -2881,6 +2881,7 @@ fieldset[disabled] .button {
 
 .buttons .button {
   margin-bottom: 0.5rem;
+  width: 47%;
 }
 
 .buttons .button:not(:last-child):not(.is-fullwidth) {
