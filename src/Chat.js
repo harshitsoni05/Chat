@@ -241,7 +241,7 @@ class Chat {
         container.appendChild(HTML);
       }
     }
-	container.scrollTop = container.scrollHeight;
+	mainPage.scrollTop = mainPage.scrollHeight;
   }
 }
 module.exports = Chat;

@@ -10,6 +10,7 @@ section.section .container,
 section.section .container .columns,
 section.section .container .columns .column {
   min-height: 320px;
+  overflow: auto;
   /* height: 100%; */
 }
 body {
