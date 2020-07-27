@@ -176,7 +176,7 @@ class Chat {
       overlayBtn.classList.remove("is-loading");
       overlayBtn.textContent = "Start";
       if (info.style.display === "none") {
-        const innerHTML = `<div class="talktext"><span class="span">${msg}</span></div>`;
+        const innerHTML = `<div class="talk-bubble tri-right round right-in"><div class="talktext"><span class="span">${msg}</span></div></div>`;
         info.innerHTML = innerHTML;
         info.style.display = "block";
       }
@@ -235,7 +235,7 @@ class Chat {
         img.src = msg.img;
       } else {
         ["has-text-right", "is-size-6", "right-aligned"].forEach((e) => HTML.classList.add(e));
-        HTML.innerHTML = `<div class="talktext"><span class="span">${msg.msg}</span></div>`;
+        HTML.innerHTML = `<div class="talk-bubble tri-right round right-in"><div class="talktext"><span class="span">${msg.msg}</span></div></div>`;
         container.appendChild(HTML);
       }
     }
