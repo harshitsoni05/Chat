@@ -241,9 +241,8 @@ class Chat {
         container.appendChild(HTML);
       }
     }
-	
+	mainPage.
   }
-  var l = document.getElementsByClassName("msgContainer").length;
-    document.getElementsByClassName("msgContainer")[l-1].scrollIntoView();
+  document.getElementById('msgContainer').scrollTop = document.getElementById('msgContainer').scrollHeight;
 }
 module.exports = Chat;
