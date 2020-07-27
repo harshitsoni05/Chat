@@ -194,7 +194,7 @@ class Chat {
     let HTML = document.createElement("div");
 
     if (direction === "left") {
-      ["has-text-left", "is-size-6", "left-aligned"].forEach((e) => HTML.classList.add(e));
+      ["has-text-left", "talk-bubble","tri-left","round","left-in", "left-aligned"].forEach((e) => HTML.classList.add(e));
       let html;
       const leftMsg = document.querySelectorAll(".left-aligned");
       const leftLastChild = leftMsg[leftMsg.length - 1];
@@ -217,9 +217,9 @@ class Chat {
           if (leftMsg.length == 0 || leftLastChild.textContent === `${user}: typing...`) {
             // remove typing child
             container.removeChild(leftLastChild);
-            html = `<div class="talk-bubble tri-left round left-in"><div class="talktext"><span class="span"><strong>${user}: </strong></span><span class="span">${msg.msg}</span></div></div>`;
+            html = `<div class="talktext"><span class="span"><strong>${user}: </strong></span><span class="span">${msg.msg}</span></div>`;
           } else {
-            html = `<div class="talk-bubble tri-left round left-in"><div class="talktext"><span class="span"><strong>${user}: </strong></span><span class="span">${msg.msg}</span></div></div>`;
+            html = `<div class="talktext"><span class="span"><strong>${user}: </strong></span><span class="span">${msg.msg}</span></div>`;
           }
           HTML.innerHTML = html;
           container.appendChild(HTML);
@@ -234,8 +234,8 @@ class Chat {
         };
         img.src = msg.img;
       } else {
-        ["has-text-right", "is-size-6", "right-aligned"].forEach((e) => HTML.classList.add(e));
-        HTML.innerHTML = `<div class="talk-bubble tri-right round right-in"><div class="talktext"><span class="span">${msg.msg}</span></div></div>`;
+        ["has-text-right", "talk-bubble","tri-right","round","right-in", "right-aligned"].forEach((e) => HTML.classList.add(e));
+        HTML.innerHTML = `<div class="talktext"><span class="span">${msg.msg}</span></div>`;
         container.appendChild(HTML);
       }
     }
@@ -244,7 +244,7 @@ class Chat {
   }
 }
 
-
+div
 function scrollToBottom() {
 	const messages = document.getElementById('mainPage');
   messages.scrollTop = messages.scrollHeight;
