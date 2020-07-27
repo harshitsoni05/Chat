@@ -11,6 +11,7 @@ section.section .container .columns,
 section.section .container .columns .column {
   min-height: 320px;
   overflow: auto;
+  height:500px;
   /* height: 100%; */
 }
 body {
@@ -91,7 +92,7 @@ form button {
 #msgContainer {
   line-height: 1.5;
   margin-bottom: 1rem;
-  height: auto;
+  height: ;
   overflow-y:auto;
 }
 #notification {

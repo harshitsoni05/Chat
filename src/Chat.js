@@ -244,7 +244,7 @@ class Chat {
   }
 }
 
-const messages = document.getElementById('msgContainer');
+const messages = document.getElementById('mainPage');
 
 
 
