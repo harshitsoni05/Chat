@@ -46,7 +46,7 @@ class Chat {
       landingPage.style.display = "none";
       const mainUser = document.getElementById("subtitle");
       mainUser.textContent = `Welcome ${user}`;
-      document.getElementById("otherUser").textContent = `Congrats. You are connected to ${otherUser}`;
+      document.getElementById("otherUser").textContent = `${otherUser}`;
       // register your timer here;
     });
 
