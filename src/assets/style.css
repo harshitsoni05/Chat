@@ -90,7 +90,7 @@ form button {
 }
 #msgContainer {
   line-height: 1.5;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   overflow-y:auto;
 }
 #notification {
