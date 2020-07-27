@@ -217,9 +217,9 @@ class Chat {
           if (leftMsg.length == 0 || leftLastChild.textContent === `${user}: typing...`) {
             // remove typing child
             container.removeChild(leftLastChild);
-            html = `<div class="talk-bubble tri-left round left-in"><div class="talktext"><span class="span"><strong>${user}: </strong></span><span class="span">${msg.msg}</span></div></div>`;
+            html = `<div class="talk-bubble tri-left round left-in"><div class="talktext"><span class="span">${msg.msg}</span></div></div>`;
           } else {
-            html = `<div class="talk-bubble tri-left round left-in"><div class="talktext"><span class="span"><strong>${user}: </strong></span><span class="span">${msg.msg}</span></div></div>`;
+            html = `<div class="talk-bubble tri-left round left-in"><div class="talktext"><span class="span">${msg.msg}</span></div></div>`;
           }
           HTML.innerHTML = html;
           container.appendChild(HTML);
