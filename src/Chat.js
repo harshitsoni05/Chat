@@ -176,7 +176,7 @@ class Chat {
       overlayBtn.classList.remove("is-loading");
       overlayBtn.textContent = "Start";
       if (info.style.display === "none") {
-        const innerHTML = `<div class="talk-bubble tri-right round right-in"><div class="talktext"><span class="span">${msg}</span></div></div>`;
+        const innerHTML = `<span class="span">${msg}</span>`;
         info.innerHTML = innerHTML;
         info.style.display = "block";
       }
@@ -217,9 +217,9 @@ class Chat {
           if (leftMsg.length == 0 || leftLastChild.textContent === `${user}: typing...`) {
             // remove typing child
             container.removeChild(leftLastChild);
-            html = `<span class="span"><strong>${user}: </strong></span><span class="span">${msg.msg}</span>`;
+            html = `<div class="talk-bubble tri-left round left-in"><div class="talktext"><span class="span"><strong>${user}: </strong></span><span class="span">${msg.msg}</span></div></div>`;
           } else {
-            html = `<span class="span"><strong>${user}: </strong></span><span class="span">${msg.msg}</span>`;
+            html = `<div class="talk-bubble tri-left round left-in"><div class="talktext"><span class="span"><strong>${user}: </strong></span><span class="span">${msg.msg}</span></div></div>`;
           }
           HTML.innerHTML = html;
           container.appendChild(HTML);
