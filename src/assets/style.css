@@ -89,7 +89,9 @@ form button {
   flex: 1 0 auto;
 }
 #msgContainer {
-	height: 200px;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  height: auto;
   overflow-y:auto;
 }
 #notification {
