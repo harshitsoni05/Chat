@@ -6,15 +6,16 @@ body{
 
 /* container */
 .container {
-  padding: 5% 5%;
+  padding: 0%;
 }
 
 /* CSS talk bubble */
 .talk-bubble {
 	margin: 1px;
     display: inline-block;
-    position: inherit;
+    position: auto;
     height: auto;
+	width:auto;
     background-color: pink;
 }
 .border{
@@ -71,7 +72,7 @@ body{
 	position: absolute;
 	width: 0;
 	height: 0;
-  left: -20px;
+  left: 0px;
 	right: auto;
   top: 38px;
 	bottom: auto;
@@ -100,7 +101,7 @@ body{
 	left: 0px;
   right: auto;
   top: auto;
-	bottom: -20px;
+	bottom: 0px;
 	border: 22px solid;
 	border-color: transparent transparent transparent lightyellow;
 }
@@ -126,7 +127,7 @@ body{
 	left: 38px;
   right: auto;
   top: auto;
-	bottom: -20px;
+	bottom: 0px;
 	border: 12px solid;
 	border-color: lightyellow transparent transparent lightyellow;
 }
@@ -150,7 +151,7 @@ body{
 	height: 0;
   left: auto;
 	right: 38px;
-	bottom: -20px;
+	bottom: 0px;
 	border: 12px solid;
 	border-color: lightyellow lightyellow transparent transparent;
 }
@@ -187,7 +188,7 @@ body{
 	height: 0;
   left: auto;
 	right: 0px;
-	bottom: -20px;
+	bottom: 0px;
 	border: 12px solid;
 	border-color: lightyellow lightyellow transparent transparent;
 }
@@ -211,7 +212,7 @@ body{
 	width: 0;
 	height: 0;
   left: auto;
-	right: -20px;
+	right: 0px;
   top: 38px;
 	bottom: auto;
 	border: 12px solid;
@@ -237,7 +238,7 @@ body{
 	width: 0;
 	height: 0;
   left: auto;
-	right: -20px;
+	right: 0px;
   top: 0px;
 	bottom: auto;
 	border: 20px solid;
