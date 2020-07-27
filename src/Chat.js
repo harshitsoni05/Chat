@@ -248,7 +248,7 @@ class Chat {
 
 
 function scrollToBottom() {
-	const messages = document.getElementById('msgContainer');
+	const messages = document.getElementById('mainPage');
   messages.scrollTop = messages.scrollHeight;
 }
 
