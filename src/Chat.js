@@ -77,9 +77,7 @@ class Chat {
       displayNotification("No internet connection.", "danger");
     });
 
-    this.socket.on("system", function (userCount) {
-      document.getElementById("onlineCount").textContent = `User Online: ${userCount}`;
-    });
+    
 
     this.socket.on("newMsg", function (user, msg) {
       that._displayNewMsg(user, msg, "left");
