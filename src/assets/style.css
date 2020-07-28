@@ -61,9 +61,10 @@ form button {
 .field.has-addons {
 left: 4px;
     right: 1px;
-    position: static;
+    position: fixed;
     bottom: 8px;
     width: 100%;
+	
 }
 .add-columns,
 .add-columns .column {
@@ -90,11 +91,9 @@ left: 4px;
   flex: 1 0 auto;
 }
 #msgContainer {
-	height:26rem;
   line-height: 1.5;
   margin-bottom: 1rem;
   overflow-y:auto;
-  style="position:relative;"
 }
 #notification {
   position: fixed;
