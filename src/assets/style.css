@@ -61,7 +61,7 @@ form button {
 .field.has-addons {
 left: 4px;
     right: 1px;
-    position: relative;
+    position: static;
     bottom: 8px;
     width: 100%;
 }
