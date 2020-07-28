@@ -16,7 +16,7 @@ body{
     position: auto;
     height: auto;
 	width:auto;
-    background-color: pink;
+    background-color: #009CC4;
 }
 
 .talk-bubble1 {
@@ -25,7 +25,7 @@ body{
     position: auto;
     height: auto;
 	width:auto;
-    background-color: #c2f3e7;
+    background-color: #f9dfac;
 }
 
 .border{
@@ -249,7 +249,16 @@ body{
   padding: 1em;
 	text-align: left;
   line-height: 1.5em;
+  color:white;
 }
+
+.talktext1{
+  padding: 1em;
+	text-align: left;
+  line-height: 1.5em;
+  color:black;
+}
+
 .talktext p{
   /* remove webkit p margins */
   -webkit-margin-before: 0em;
