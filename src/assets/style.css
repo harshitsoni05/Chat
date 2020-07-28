@@ -90,9 +90,9 @@ left: 4px;
   flex: 1 0 auto;
 }
 #msgContainer {
-	height:438px;
+	height:420px;
   line-height: 1.5;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0rem;
   overflow-y:auto;
 }
 #notification {
