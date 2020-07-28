@@ -62,7 +62,7 @@ form button {
 left: 4px;
     right: 1px;
     position: fixed;
-    bottom: 10px;
+    bottom: 5px;
     width: 100%;
 }
 .add-columns,
@@ -83,7 +83,7 @@ left: 4px;
   display: flex;
   width: 97.5%;
   margin-top: 0.3rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   position: fixed;
 }
 .navigation#simpleNavbar div{
