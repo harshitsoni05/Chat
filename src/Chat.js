@@ -44,8 +44,7 @@ class Chat {
       mainPage.style.display = "block";
       navbar.style.display = "flex";
       landingPage.style.display = "none";
-      const mainUser = document.getElementById("subtitle");
-      mainUser.textContent = `Welcome ${user}`;
+      
       document.getElementById("otherUser").textContent = `${otherUser}`;
       // register your timer here;
     });
@@ -235,7 +234,7 @@ class Chat {
         img.src = msg.img;
       } else {
         ["has-text-right", "is-size-6", "right-aligned"].forEach((e) => HTML.classList.add(e));
-        HTML.innerHTML = `<div class="talk-bubble1 tri-right round right-in"><div class="talktext"><span class="span">${msg.msg}</span></div></div>`;
+        HTML.innerHTML = `<div class="talk-bubble1 tri-right round right-in"><div class="talktext1"><span class="span">${msg.msg}</span></div></div>`;
         container.appendChild(HTML);
       }
     }
