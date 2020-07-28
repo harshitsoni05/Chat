@@ -82,7 +82,7 @@ left: 4px;
 .navigation#simpleNavbar{
   display: flex;
   width: 97.5%;
-  margin-top: 0.3rem;
+  margin-top: 0.rem;
   margin-bottom: 0.5rem;
   position: fixed;
 }
@@ -90,9 +90,9 @@ left: 4px;
   flex: 1 0 auto;
 }
 #msgContainer {
-	height:80%;
+	height:438px;
   line-height: 1.5;
-  margin-bottom: 3rem;
+  margin-bottom: 0.5rem;
   overflow-y:auto;
 }
 #notification {
