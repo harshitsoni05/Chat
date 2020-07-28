@@ -81,8 +81,8 @@ left: 4px;
 }
 .navigation#simpleNavbar{
   display: flex;
-  width: 90%;
-  margin-top: 0.5rem;
+  width: 97.5%;
+  margin-top: 0.3rem;
   margin-bottom: 1.5rem;
   position: fixed;
 }
