@@ -18,6 +18,16 @@ body{
 	width:auto;
     background-color: pink;
 }
+
+.talk-bubble1 {
+	margin: 1px;
+    display: inline-block;
+    position: auto;
+    height: auto;
+	width:auto;
+    background-color: gray;
+}
+
 .border{
   border: 8px solid #666;
 }

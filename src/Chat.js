@@ -235,7 +235,7 @@ class Chat {
         img.src = msg.img;
       } else {
         ["has-text-right", "is-size-6", "right-aligned"].forEach((e) => HTML.classList.add(e));
-        HTML.innerHTML = `<div class="talk-bubble tri-right round right-in"><div class="talktext"><span class="span">${msg.msg}</span></div></div>`;
+        HTML.innerHTML = `<div class="talk-bubble1 tri-right round right-in"><div class="talktext"><span class="span">${msg.msg}</span></div></div>`;
         container.appendChild(HTML);
       }
     }
