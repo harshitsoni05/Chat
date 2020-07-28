@@ -206,18 +206,7 @@ body{
 	border: 20px solid;
 	border-color: #666 transparent transparent #666;
 }
-.tri-right.right-in:after{
-	content: ' ';
-	position: absolute;
-	width: 0;
-	height: 0;
-  left: auto;
-	right: 0px;
-  top: 38px;
-	bottom: auto;
-	border: 12px solid;
-	border-color: lightyellow transparent transparent lightyellow;
-}
+
 
 /* Right triangle placed top right flush. */
 .tri-right.border.right-top:before {
