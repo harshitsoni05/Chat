@@ -12,28 +12,64 @@
     <link rel="stylesheet" href="style.css" />
 	<link rel="stylesheet" href="m.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
   </head>
+  <style>::placeholder {
+  padding-left : 25px;
+  color: #aed5ef;
+  opacity: 1; /* Firefox */
+}
+.inp {
+-webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: textfield;
+    background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 2px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(195, 195, 195));
+    border-image: initial;
+}
+</style>
   <body>
+  
     <section class="section hero is-fullheight is-info" id="landingPage">
       <div class="hero">
-        <div class="hero-body">
+        <div class="hero-body" style="padding-top: 1.5rem;">
+		
           <div class="container has-text-centered">
-            <p class="title is-spaced">
-              Please Enter a name
-            </p>
-            <div class="field">
-              <div class="control">
-                <input type="text" class="input" placeholder="Name" required id="name" />
-              </div>
-            </div>
+		  <img src="2.png" style="height : 110px;width : 280px;"> <br><br><br><br><br><br>
+		  <img src="3.png" style="height : 150px;width : 400px;"> <br>
+            <br>
+            
+              
+                <input type="text"  class="inp" placeholder="Any name.." required id="name" style="outline: none;
+    padding-left: 20px;    color: white;box-sizing: border-box; font-size: 1.2rem; width: 60%; height:50px; border-radius: 35px; background-color: #009CC4; border : 2px solid white" ;  />  <span style="padding-left:15px"> <span> <button class="button is-link" style="border: 20px white; border-radius: 35px; background-color: #FFBB34; size: 2px ; width: 50px;
+    font-size: x-small;
+    height: 50px;" id="overlayBtn">START</button>
+              
+            <br><br><br><br><br><br>
+			<a class="text" style="    font-size: 14px; color : black;">Terms of Service and Privacy policy</a>
+			
+			<br><br>
+			<a class="text" style="    font-size: 14px; color : black;">Contact Us</a>
+			
             <div class="is-danger" style="display: none; color: red;" id="info">
               <span class="span">Name Already Taken</span>
             </div>
-            <div class="field">
-              <div class="control">
-                <button class="button is-link" id="overlayBtn">Start</button>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>
