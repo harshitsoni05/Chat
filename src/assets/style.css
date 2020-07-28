@@ -94,6 +94,7 @@ left: 4px;
   line-height: 1.5;
   margin-bottom: 1rem;
   overflow-y:auto;
+  style="position:relative;"
 }
 #notification {
   position: fixed;
