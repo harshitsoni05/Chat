@@ -30,7 +30,7 @@ class Chat {
     });
 	
 	ctn.addEventListener("click", () => {
-      document.getElementById("modal").classList.remove("is-active");
+      document.getElementById("modal1").classList.remove("is-active");
       // clear your timer
     });
 	
