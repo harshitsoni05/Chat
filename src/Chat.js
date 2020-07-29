@@ -16,11 +16,24 @@ class Chat {
     const exitBtn = document.getElementById("exit");
     const navbar = document.getElementById("simpleNavbar");
     const modal = document.getElementById("modal");
+	const modal1 = document.getElementById("modal1");
+	const tc = document.getElementById("tc");
+	const ctn = document.getElementById("ctn");
     const cameraBtn = document.getElementById("cameraBtn");
     const modalBis = document.getElementById("modal-bis");
     const modalBisCloseBtn = document.getElementById("modal-bis-close-btn");
     const displayedPic = document.getElementById("photo");
 
+	tc.addEventListener("click", () => {
+      document.getElementById("modal1").classList.add("is-active");
+      // clear your timer
+    });
+	
+	ctn.addEventListener("click", () => {
+      document.getElementById("modal").classList.remove("is-active");
+      // clear your timer
+    });
+	
     let that = this;
     let timer;
     this.socket.on("connect", () => {
