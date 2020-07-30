@@ -74,7 +74,7 @@ io.sockets.on("connection", function (socket) {
       sockets[socket.otherUserId].emit("notification", "Your Partner left.", "danger");
       cleanupPair(socket);
     }
-    socket.emit("partnerLeft", "You have successfully left the room.");
+    //socket.emit("partnerLeft", "You have successfully left the room.");
   });
 
   function findPairForUser() {
