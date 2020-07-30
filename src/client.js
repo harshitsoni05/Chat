@@ -6,10 +6,10 @@ window.addEventListener("load", () => {
 const modalTris = document.getElementById("modal-tris");
 const modalQuar = document.getElementById("modal-quar");
 document.getElementById("cancel-exit").addEventListener("click", () => {
-  modalTris.style.display = "none";
+  modalTris.classList.remove("is-active");
 });
 document.getElementById("cancel-next").addEventListener("click", () => {
-  modalQuar.style.display = "none";
+  modalQuar.classList.remove("is-active");
 });
 document.getElementById("nextBtn").addEventListener("click", () => {
   modalQuar.classList.add("is-active");
