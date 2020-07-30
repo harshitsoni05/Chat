@@ -59,7 +59,7 @@ class Chat {
       navbar.style.display = "flex";
       landingPage.style.display = "none";
       if (keyboard.style.display == "none") {
-        keyboard.style.display = "block";
+        keyboard.style.display = "flex";
       }
       document.getElementById("otherUser").textContent = `${otherUser}`;
       // register your timer here;
