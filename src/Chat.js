@@ -113,7 +113,7 @@ class Chat {
       document.getElementById("modal-tris").classList.remove("is-active");
       // clear your timer
       that.socket.emit("getMeOut");
-	  displayMessageOnLogin();
+	  displayMessageOnLogin("");
     });
 
     document.getElementById("overlayBtn").addEventListener(
