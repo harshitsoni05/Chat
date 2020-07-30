@@ -26,12 +26,12 @@ class Chat {
 
 	tc.addEventListener("click", () => {
       document.getElementById("modal1").classList.add("is-active");
-      // clear your timer
+      
     });
 	
 	ctn.addEventListener("click", () => {
       document.getElementById("modal1").classList.remove("is-active");
-      // clear your timer
+      
     });
 	
     let that = this;
