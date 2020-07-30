@@ -271,4 +271,8 @@ function scrollToBottom() {
 
 scrollToBottom();
 
+window.addEventListener("beforeunload", function(event) {
+    event.returnValue = "STOP!!!";
+});
+
 module.exports = Chat;
