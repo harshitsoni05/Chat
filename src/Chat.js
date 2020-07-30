@@ -78,9 +78,7 @@ class Chat {
 
     this.socket.on("notification", (msg, code) => {
 	  displayNotification(msg, code);
-	  if (msg == "Your Partner left."){
-		  keyboard.style.display = "none";
-	  }
+	  
     });
 
     this.socket.on("disconnect", () => {

@@ -71,10 +71,10 @@ io.sockets.on("connection", function (socket) {
     if(socket.isPaired){
       pairedUser.del(socket.pairCount);
       cleanupPair(sockets[socket.otherUserId]);
-      sockets[socket.otherUserId].emit("notification", "Your Partner left.", "danger");
+      sockets[socket.otherUserId].emit("partnerLeft", "Your partner has left.");
       cleanupPair(socket);
     }
-    //socket.emit("partnerLeft", "You have successfully left the room.");
+    socket.emit("partnerLeft", "You have successfully left the room.");
   });
 
   function findPairForUser() {
