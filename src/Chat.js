@@ -23,6 +23,7 @@ class Chat {
     const modalBis = document.getElementById("modal-bis");
     const modalBisCloseBtn = document.getElementById("modal-bis-close-btn");
     const displayedPic = document.getElementById("photo");
+	const keyboard = document.getElementById("keyboard");
 
 	tc.addEventListener("click", () => {
       document.getElementById("modal1").classList.add("is-active");
@@ -76,7 +77,10 @@ class Chat {
     });
 
     this.socket.on("notification", (msg, code) => {
-      displayNotification(msg, code);
+	  displayNotification(msg, code);
+	  if (msg == "Your Partner left."){
+		  keyboard.style.display = "none";
+	  }
     });
 
     this.socket.on("disconnect", () => {
