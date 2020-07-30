@@ -71,7 +71,7 @@ io.sockets.on("connection", function (socket) {
     if(socket.isPaired){
       pairedUser.del(socket.pairCount);
       cleanupPair(sockets[socket.otherUserId]);
-      sockets[socket.otherUserId].emit("partnerLeft", "Your partner has left.");
+      sockets[socket.otherUserId].emit("notification", "Your Partner left.", "danger");
       cleanupPair(socket);
     }
     socket.emit("partnerLeft", "You have successfully left the room.");
