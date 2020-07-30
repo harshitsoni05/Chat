@@ -40,7 +40,7 @@ io.sockets.on("connection", function (socket) {
       if (socket.isPaired) {
         pairedUser.del(socket.pairCount);
         const otherUserSocket = sockets[socket.otherUserId];
-        otherUserSocket.emit("partnerLeft", "Your Partner Left.");
+        otherUserSocket.emit("notification", "Your Partner left.", "danger");
         delete sockets[socket.id];
         cleanupPair(otherUserSocket);
       } else {
