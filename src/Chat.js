@@ -37,8 +37,8 @@ class Chat {
       
     });
 	
+    let countdown;
     let that = this;
-    let timer;
     this.socket.on("connect", () => {
       document.getElementById("name").focus();
       navbar.style.display = "none";
