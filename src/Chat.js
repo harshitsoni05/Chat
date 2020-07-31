@@ -171,6 +171,11 @@ class Chat {
       false
     );
 
+	function clearTimer() {
+      clearInterval(countdown);
+      timerHTML.textContent = "";
+    }
+	
     function displayNotification(msg, type) {
       type === "danger" && notification.classList.add("is-danger");
       const div = document.querySelector("#notification div");
@@ -270,7 +275,6 @@ class Chat {
         container.appendChild(HTML);
       }
     }
-	
   scrollToBottom();
   }
 }
