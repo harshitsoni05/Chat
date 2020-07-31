@@ -83,7 +83,7 @@ io.sockets.on("connection", function (socket) {
       cleanupPair(sockets[socket.otherUserId]);
       sockets[socket.otherUserId].emit("notification", "Your time has ended.","danger");
       cleanupPair(socket);
-      socket.emit("partnerLeft", "Your time has ended.");
+      socket.emit("notification", "Your time has ended.","danger");
     }
   });
   
