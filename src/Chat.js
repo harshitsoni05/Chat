@@ -26,6 +26,7 @@ class Chat {
     const displayedPic = document.getElementById("photo");
 	const keyboard = document.getElementById("keyboard");
 	const timerHTML = document.getElementById("timer");
+	const note = document.getElementById("note");
 
 	tc.addEventListener("click", () => {
       document.getElementById("modal1").classList.add("is-active");
@@ -178,8 +179,7 @@ class Chat {
 	
     function displayNotification(msg, type) {
       type === "danger" && notification.classList.add("is-danger");
-      const div = document.querySelector("#notification div");
-      div.textContent = msg;
+      note.textContent = msg;
       notification.style.display = "block";
     }
     function loginHandler(e) {
