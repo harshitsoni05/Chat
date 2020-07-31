@@ -246,7 +246,9 @@ class Chat {
           // it's an image
           const img = new Image();
           img.onload = function () {
-            container.appendChild(img);
+            ["has-text-left", "is-size-6", "left-aligned"].forEach((e) => HTML.classList.add(e));
+        HTML.innerHTML = `<span class="span">${img}</span>`;
+        container.appendChild(HTML);
           };
           img.src = msg.img;
         } else {
@@ -266,7 +268,9 @@ class Chat {
         // it's an image
         const img = new Image();
         img.onload = function () {
-          container.appendChild(img);
+			["has-text-right", "is-size-6", "right-aligned"].forEach((e) => HTML.classList.add(e));
+          HTML.innerHTML = `<span class="span">${img}</span>`;
+        container.appendChild(HTML);
         };
         img.src = msg.img;
       } else {
