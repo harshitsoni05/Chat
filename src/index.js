@@ -81,7 +81,7 @@ io.sockets.on("connection", function (socket) {
     if (socket.isPaired) {
       pairedUser.del(socket.pairCount);
       cleanupPair(sockets[socket.otherUserId]);
-      sockets[socket.otherUserId].emit("partnerLeft", "Your time has ended.");
+      sockets[socket.otherUserId].emit("notification", "Your time has ended.","danger");
       cleanupPair(socket);
       socket.emit("partnerLeft", "Your time has ended.");
     }

@@ -90,7 +90,7 @@ class Chat {
     this.socket.on("notification", (msg, code) => {
 	  displayNotification(msg, code);
 	  clearTimer();
-	  if (msg == "Your Partner left."){
+	  if (msg == "Your Partner left." || msg == "Your time has ended." ){
 		  keyboard.style.display = "none";
 	  }
     });
