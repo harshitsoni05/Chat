@@ -77,6 +77,16 @@ io.sockets.on("connection", function (socket) {
     //socket.emit("partnerLeft", "You have successfully left the room.");
   });
 
+  socket.on("timer expired", () => {
+    if (socket.isPaired) {
+      pairedUser.del(socket.pairCount);
+      cleanupPair(sockets[socket.otherUserId]);
+      sockets[socket.otherUserId].emit("partnerLeft", "Your time has ended.");
+      cleanupPair(socket);
+      socket.emit("partnerLeft", "Your time has ended.");
+    }
+  });
+  
   function findPairForUser() {
     while (priorityQuque.length > 1) {
       if (pairedUser.set(pairCount, [priorityQuque[0], priorityQuque[1]], 0)) {
