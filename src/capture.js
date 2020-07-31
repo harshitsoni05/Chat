@@ -20,23 +20,68 @@ var canvas = null;
 var photo = null;
 var startbutton = null;
 var mediaStream;
+
 function startup() {
   video = document.getElementById("video");
   canvas = document.getElementById("canvas");
   photo = document.getElementById("photo");
   startbutton = document.getElementById("startbutton");
-
-  navigator.mediaDevices
-    .getUserMedia({ video: { facingMode: "user" }, audio: false })
-    .then(function (stream) {
-      mediaStream = stream;
-      video.srcObject = stream;
-      video.play();
-    })
-    .catch(function (err) {
-      console.log("An error occurred: " + err);
+  var constraints = {
+    video: {
+      deviceId: "deviceId",
+    },
+    audio: false,
+  };
+  // Updates the select element with the provided set of cameras
+  function updateCameraList(cameras) {
+    const listElement = document.querySelector("select#availableCameras");
+    listElement.innerHTML = "";
+    cameras
+      .map((camera) => {
+        const cameraOption = document.createElement("option");
+        cameraOption.label = camera.label;
+        cameraOption.value = camera.deviceId;
+        cameraOption.textContent = camera.deviceId;
+        return cameraOption;
+      })
+      .forEach((cameraOption) => listElement.add(cameraOption));
+    listElement.addEventListener("change", (e) => {
+      stopStreaming();
+      constraints.video.deviceId = e.target.value;
+      startStreaming();
     });
+  }
 
+  // Fetch an array of devices of a certain type
+  async function getConnectedDevices(type) {
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    return devices.filter((device) => device.kind === type);
+  }
+
+  // Get the initial set of cameras connected
+  getConnectedDevices("videoinput").then((videoCameras) => {
+    updateCameraList(videoCameras);
+  });
+
+  // Listen for changes to media devices and update the list accordingly
+  navigator.mediaDevices.addEventListener("devicechange", async () => {
+    const newCameraList = await getConnectedDevices("video");
+    updateCameraList(newCameraList);
+  });
+
+  function startStreaming() {
+    navigator.mediaDevices
+      .getUserMedia(constraints)
+      .then(function (stream) {
+        mediaStream = stream;
+        video.srcObject = stream;
+        video.play();
+      })
+      .catch(function (err) {
+        console.log("An error occurred: " + err);
+      });
+  }
+  startStreaming();
   video.addEventListener(
     "canplay",
     function (ev) {

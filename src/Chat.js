@@ -1,4 +1,5 @@
 const { startup, stopStreaming } = require("./capture");
+const timer = require("./timer");
 
 class Chat {
   constructor() {
@@ -24,6 +25,7 @@ class Chat {
     const modalBisCloseBtn = document.getElementById("modal-bis-close-btn");
     const displayedPic = document.getElementById("photo");
 	const keyboard = document.getElementById("keyboard");
+	const timerHTML = document.getElementById("timer");
 
 	tc.addEventListener("click", () => {
       document.getElementById("modal1").classList.add("is-active");
@@ -62,11 +64,18 @@ class Chat {
         keyboard.style.display = "flex";
       }
       document.getElementById("otherUser").textContent = `${otherUser}`;
+      messageInput.disabled = false;
+      clearInterval(countdown);
+      document.getElementById("timer").textContent = "";
       // register your timer here;
+      countdown = timer(function () {
+        that.socket.emit("timer expired");
+      }).ref;
     });
 
     this.socket.on("partnerLeft", (msg) => {
       // clear your timer
+	  clearTimer();
       displayMessageOnLogin(msg);
     });
 
@@ -80,6 +89,7 @@ class Chat {
 
     this.socket.on("notification", (msg, code) => {
 	  displayNotification(msg, code);
+	  clearTimer();
 	  if (msg == "Your Partner left."){
 		  keyboard.style.display = "none";
 	  }
@@ -106,12 +116,14 @@ class Chat {
       that.socket.emit("findAnotherPair");
       modal.classList.add("is-active");
       // clear your timer
+	  clearTimer();
       that._removeChild(document.getElementById("msgContainer"));
     });
 
     exitBtn.addEventListener("click", () => {
       document.getElementById("modal-tris").classList.remove("is-active");
       // clear your timer
+	  clearTimer();
       that.socket.emit("getMeOut");
 	  displayMessageOnLogin("");
     });

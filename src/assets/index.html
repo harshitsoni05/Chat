@@ -66,6 +66,7 @@
 			<br><br>
 			<a class="text" style="    font-size: 14px; color : black;">Contact Us</a>
 			
+			
             <div class="is-danger" style="display: none; color: red;" id="info">
               <span class="span">Name Already Taken</span>
             </div>
@@ -95,8 +96,9 @@
             </div>
             
 			<hr style="margin-bottom: 0px;    margin-top: 3rem;">
-            <div class="subtitle is-6 has-text-centered" style="margin-bottom: 0rem; margin-top:0.3rem;   color: white;">
+            <div class="subtitle is-6 has-text-centered" style="margin-bottom: 0rem; margin-top:0.3rem;   color: white;    font-size: 0.85rem;">
               You are connected to : <b><text id="otherUser" >Name</text></b><hr>
+			  <div class="subtitle has-text-centered" id="timer"></div>
             </div>
             </div>
 			
@@ -206,15 +208,26 @@ This privacy policy was last modified on August 1, 2020.
 	
 	
 	
-    <div class="modal" id="modal-bis">
+<div class="modal" id="modal-bis">
       <div class="modal-background has-background-grey-lighter"></div>
       <div class="modal-content">
         <div class="columns">
           <div class="column">
             <div class="camera">
               <video id="video">Video stream not available.</video>
-              <button id="startbutton" class="button is-primary is-rounded" style = "color: #009cc4;">Take photo</button>
-              <button class="button is-info" id="imageBtn" style = "color: #009cc4;">Send</button>
+              <button id="startbutton" class="button is-primary is-rounded">Take photo</button>
+              <div class="field">
+                <div class="control">
+                  <div class="select">
+                    <select id="availableCameras"></select>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <button class="button is-info" id="imageBtn">Send</button>
+                </div>
+              </div>
             </div>
             <canvas id="canvas"> </canvas>
           </div>
