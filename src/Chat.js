@@ -17,32 +17,70 @@ class Chat {
     const exitBtn = document.getElementById("exit");
     const navbar = document.getElementById("simpleNavbar");
     const modal = document.getElementById("modal");
-	const modal1 = document.getElementById("modal1");
-	const tc = document.getElementById("tc");
-	const ctn = document.getElementById("ctn");
+    const modal1 = document.getElementById("modal1");
+    const tc = document.getElementById("tc");
+    const ctn = document.getElementById("ctn");
     const cameraBtn = document.getElementById("cameraBtn");
     const modalBis = document.getElementById("modal-bis");
     const modalBisCloseBtn = document.getElementById("modal-bis-close-btn");
     const displayedPic = document.getElementById("photo");
-	const keyboard = document.getElementById("keyboard");
-	const timerHTML = document.getElementById("timer");
-	
+    const keyboard = document.getElementById("keyboard");
+    const timerHTML = document.getElementById("timer");
 
-	tc.addEventListener("click", () => {
+    tc.addEventListener("click", () => {
       document.getElementById("modal1").classList.add("is-active");
-      
     });
-	
-	ctn.addEventListener("click", () => {
+
+    ctn.addEventListener("click", () => {
       document.getElementById("modal1").classList.remove("is-active");
-      
     });
-	
+
     let countdown;
     let that = this;
+    let firstTime = true;
     this.socket.on("connect", () => {
+      console.log("connect", this.socket.id);
       document.getElementById("name").focus();
-      navbar.style.display = "none";
+      // navbar.style.display = "none";
+      if (!firstTime) {
+        if (this.socket.connected) {
+          this.socket.emit("previous id", {
+            id: localStorage.getItem("socketId"),
+            nickname: localStorage.getItem("nickname"),
+          });
+        }
+      } else {
+        localStorage.removeItem("socketId");
+        localStorage.removeItem('nickname')
+      }
+    });
+
+    this.socket.on("reconnect", () => {
+      notification.style.display = "none";
+      notification.classList.remove("is-danger");
+      const div = document.querySelector("#notification div");
+      div.textContent = "";
+    });
+
+    this.socket.on("reconnecting", () => {
+      displayNotification("Reconnecting...", "info");
+      console.log("Reconnecting... to server");
+    });
+
+    this.socket.on("disconnect", (reason) => {
+      if (reason === "io server disconnect") {
+        // the disconnection was initiated by the server, you need to reconnect manually
+        this.socket.connect();
+      } else {
+        // else the socket will automatically try to reconnect
+      }
+      console.log("socket disconnected");
+    });
+
+    this.socket.once("connect_error", function () {
+      // pause your timer
+      console.log("connect error");
+      displayNotification("No internet connection.", "danger");
     });
 
     this.socket.on("loginSuccess", () => {
@@ -54,6 +92,7 @@ class Chat {
     });
 
     this.socket.on("gotAPair", (user, otherUser) => {
+      firstTime = false;
       notification.style.display = "none";
       [modal, overlayBtn].forEach((e) => {
         e.classList.remove("is-active");
@@ -68,45 +107,28 @@ class Chat {
       messageInput.disabled = false;
       clearInterval(countdown);
       document.getElementById("timer").textContent = "";
-      // register your timer here;
+      localStorage.setItem("socketId", this.socket.id);
+      localStorage.setItem("nickname", user);
       countdown = timer(function () {
         that.socket.emit("timer expired");
       }).ref;
     });
-
+    this.socket.on("remove notification", () => {
+      notification.style.display = "none";
+    });
     this.socket.on("partnerLeft", (msg) => {
       // clear your timer
-	  clearTimer();
+      clearTimer();
       displayMessageOnLogin(msg);
     });
 
-    this.socket.on("reconnect", () => {
-      console.log("reconnected.");
-      notification.style.display = "none";
-      notification.classList.remove("is-danger");
-      const div = document.querySelector("#notification div");
-      div.textContent = "";
-    });
-
     this.socket.on("notification", (msg, code) => {
-	  displayNotification(msg, code);
-	  clearTimer();
-	  if (msg == "Your Partner left." || msg == "Your time has ended." ){
-		  keyboard.style.display = "none";
-	  }
+      displayNotification(msg, code);
+      clearTimer();
+      if (msg == "Your Partner left." || msg == "Your time has ended." || msg == "You are disconnected") {
+        keyboard.style.display = "none";
+      }
     });
-
-    this.socket.on("disconnect", () => {
-      console.log("socket disconnected");
-    });
-
-    this.socket.once("connect_error", function () {
-      // pause your timer
-      console.log("connect error");
-      displayNotification("No internet connection.", "danger");
-    });
-
-    
 
     this.socket.on("newMsg", function (user, msg) {
       that._displayNewMsg(user, msg, "left");
@@ -117,16 +139,16 @@ class Chat {
       that.socket.emit("findAnotherPair");
       modal.classList.add("is-active");
       // clear your timer
-	  clearTimer();
+      clearTimer();
       that._removeChild(document.getElementById("msgContainer"));
     });
 
     exitBtn.addEventListener("click", () => {
       document.getElementById("modal-tris").classList.remove("is-active");
       // clear your timer
-	  clearTimer();
+      clearTimer();
       that.socket.emit("getMeOut");
-	  displayMessageOnLogin("");
+      displayMessageOnLogin("");
     });
 
     document.getElementById("overlayBtn").addEventListener(
@@ -172,16 +194,24 @@ class Chat {
       false
     );
 
-	function clearTimer() {
+    function clearTimer() {
       clearInterval(countdown);
       timerHTML.textContent = "";
     }
-	
+
     function displayNotification(msg, type) {
+      clearNotification();
       type === "danger" && notification.classList.add("is-danger");
+      type === "success" && notification.classList.add("is-success");
+      type === "info" && notification.classList.add("is-info");
       const div = document.querySelector("#notification div");
       div.textContent = msg;
       notification.style.display = "block";
+    }
+    function clearNotification() {
+      notification.classList.remove(["is-info", "is-danger", "is-success"]);
+      const div = document.querySelector("#notification div");
+      div.textContent = "";
     }
     function loginHandler(e) {
       if (isNaN(Number(e.keyCode)) || e.keyCode === 13) {
@@ -236,7 +266,6 @@ class Chat {
       const leftMsg = document.querySelectorAll(".left-aligned");
       const leftLastChild = leftMsg[leftMsg.length - 1];
       if (msg.typing) {
-        console.log(msg);
         if (leftMsg.length == 0 || leftLastChild.textContent !== `${user}: typing...`) {
           html = `<span class="span"><strong>${user}: </strong></span><span class="span">typing...</span>`;
           HTML.innerHTML = html;
@@ -248,8 +277,8 @@ class Chat {
           const img = new Image();
           img.onload = function () {
             ["has-text-left", "is-size-6", "left-aligned"].forEach((e) => HTML.classList.add(e));
-        HTML.innerHTML = `<img src="${msg.img}">`;
-        container.appendChild(HTML);
+            HTML.innerHTML = `<img src="${img.src}">`;
+            container.appendChild(HTML);
           };
           img.src = msg.img;
         } else {
@@ -269,9 +298,9 @@ class Chat {
         // it's an image
         const img = new Image();
         img.onload = function () {
-			["has-text-right", "is-size-6", "right-aligned"].forEach((e) => HTML.classList.add(e));
-          HTML.innerHTML = `<img src="${msg.img}">`;
-        container.appendChild(HTML);
+          ["has-text-right", "is-size-6", "right-aligned"].forEach((e) => HTML.classList.add(e));
+          HTML.innerHTML = `<img src="${img.src}">`;
+          container.appendChild(HTML);
         };
         img.src = msg.img;
       } else {
@@ -280,20 +309,19 @@ class Chat {
         container.appendChild(HTML);
       }
     }
-  scrollToBottom();
+    scrollToBottom();
   }
 }
 
-
 function scrollToBottom() {
-	const messages = document.getElementById('mainPage');
+  const messages = document.getElementById("mainPage");
   messages.scrollTop = messages.scrollHeight;
 }
 
 scrollToBottom();
 
-window.addEventListener("beforeunload", function(event) {
-    event.returnValue = "STOP!!!";
+window.addEventListener("beforeunload", function (event) {
+  event.returnValue = "STOP!!!";
 });
 
 module.exports = Chat;

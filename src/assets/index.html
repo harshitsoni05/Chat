@@ -4,119 +4,189 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <meta name="description" content="Anonymous Chat with Strangers " />
     <title>Anonymous chat App</title>
-    <link rel="stylesheet" href="bulma.css" />
-	<link rel="icon" href="5.png">
+    <link rel="stylesheet" href="bulma.min.css" />
+    <link rel="icon" href="5.png" />
     <link rel="stylesheet" href="style.css" />
-	<link rel="stylesheet" href="m.css" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	
+    <link rel="stylesheet" href="m.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174229164-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-174229164-1");
+    </script>
   </head>
-  <style>::placeholder {
-  padding-left : 5px;
-  color: #aed5ef;
-  opacity: 1; /* Firefox */
-}
-.inp {
--webkit-writing-mode: horizontal-tb !important;
-    text-rendering: auto;
-    color: -internal-light-dark(black, white);
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: start;
-    appearance: textfield;
-    background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
-    -webkit-rtl-ordering: logical;
-    cursor: text;
-    margin: 0em;
-    font: 400 13.3333px Arial;
-    padding: 1px 2px;
-    border-width: 2px;
-    border-style: inset;
-    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(195, 195, 195));
-    border-image: initial;
-}
-</style>
+  <style>
+    ::placeholder {
+      padding-left: 5px;
+      color: #aed5ef;
+      opacity: 1; /* Firefox */
+    }
+    .inp {
+      writing-mode: horizontal-tb !important;
+      -webkit-writing-mode: horizontal-tb !important;
+      text-rendering: auto;
+      color: -internal-light-dark(black, white);
+      letter-spacing: normal;
+      word-spacing: normal;
+      text-transform: none;
+      text-indent: 0px;
+      text-shadow: none;
+      display: inline-block;
+      text-align: start;
+      appearance: textfield;
+      background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+      -webkit-rtl-ordering: logical;
+      cursor: text;
+      margin: 0em;
+      font: 400 13.3333px Arial;
+      padding: 1px 2px;
+      border-width: 2px;
+      border-style: inset;
+      border-color: -internal-light-dark(rgb(118, 118, 118), rgb(195, 195, 195));
+      border-image: initial;
+    }
+  </style>
   <body>
-  
-    <section class="section hero is-info" id="landingPage" style="    background-color: #009CC4;">
+    <section class="section hero is-info" id="landingPage" style="background-color: #009cc4;">
       <div class="hero">
-        <div class="hero-body" style="padding-top: 0.8rem;padding-bottom : 0rem;">
-		
+        <div class="hero-body" style="padding-top: 0.8rem; padding-bottom: 0rem;">
           <div class="container has-text-centered">
-		  <img src="2.png" style="height : 110px;width : 280px;"> <br><br><br>
-		  <img src="3.png" style="height : 150px;width : 400px;"> <br>
-            <br>
-            
-              
-                <input type="text"  class="inp" placeholder="Any name.." required id="name" style="outline: none;
-    padding-left: 20px;    color: white;box-sizing: border-box; font-size: 1.2rem; width: 70%; height:50px; border-radius: 35px; background-color: #009CC4; border : 2px solid white" ;  />  <span style="padding-left:15px"> <span> <button class="button is-link" style="border: 20px white; border-radius: 35px; background-color: #FFBB34; size: 2px ; width: 50px;
-    font-size: x-small;
-    height: 50px;" id="overlayBtn">START</button>
-              
-            <br><br><br><br><br><br>
-			<a class="text" style="    font-size: 14px; color : black;" id="tc">Terms of Service and Privacy policy</a>
-			
-			<br><br>
-			<a class="text" style="    font-size: 14px; color : black;" href="https://forms.gle/8GtrfNy1yJarH17b6" target="_blank">Contact Us</a>
-			
-			
+            <img src="2.png" style="height: 110px; width: 280px;" /> <br /><br /><br />
+            <img src="3.png" style="height: 150px; width: 400px;" /> <br />
+            <br />
+
+            <input
+              type="text"
+              class="inp"
+              placeholder="Any name.."
+              required
+              id="name"
+              style="
+                outline: none;
+                padding-left: 20px;
+                color: white;
+                box-sizing: border-box;
+                font-size: 1.2rem;
+                width: 70%;
+                height: 50px;
+                border-radius: 35px;
+                background-color: #009cc4;
+                border: 2px solid white;
+              "
+            />
+            <span style="padding-left: 15px;"> </span>
+            <button
+              class="button is-link"
+              style="
+                border: 20px white;
+                border-radius: 35px;
+                background-color: #ffbb34;
+                size: 2px;
+                width: 50px;
+                font-size: x-small;
+                height: 50px;
+              "
+              id="overlayBtn"
+            >
+              START
+            </button>
+
+            <br /><br /><br /><br /><br /><br />
+            <a class="text" style="font-size: 14px; color: black;" id="tc">Terms of Service and Privacy policy</a>
+            <br /><br />
+            <a
+              class="text"
+              style="font-size: 14px; color: black;"
+              href="https://forms.gle/8GtrfNy1yJarH17b6"
+              target="_blank"
+              >Contact Us</a
+            >
+
             <div class="is-danger" style="display: none; color: red;" id="info">
               <span class="span">Name Already Taken</span>
             </div>
-            
           </div>
         </div>
       </div>
     </section>
-    <section class="section has-background-white" id="mainPage" style="display: none; padding-left: 5px;
-    padding-right: 5px;
-}">
+    <section
+      class="section has-background-white"
+      id="mainPage"
+      style="display: none; padding-left: 5px; padding-right: 5px;"
+    >
       <div class="">
         <div class="">
           <div
-            style="position: fixed;
-        width: -webkit-fill-available;
-		background-color: #009cc4;
-		left: 2px;
-    right: 2px;
-    top: 0px;"
+            style="
+              position: fixed;
+              width: -webkit-fill-available;
+              background-color: #009cc4;
+              left: 2px;
+              right: 2px;
+              top: 0px;
+            "
           >
-            <div class="navigation" id="simpleNavbar" style="margin-left:3px;">
-              <div style="text-align: left;"><a class="button is-danger" id="exitBtn" style="background-color: #009CC4; border : 1px solid white;border-radius:25px;">Back</a></div>
-			  <div class="container has-text-centered">
-            <img src="1.png" style="height: 40px;margin-top: 2px;"></div>
-              <div style="text-align: right;"><a class="button is-success" id="nextBtn" style="background-color: #009CC4;border : 1px solid white;border-radius:25px;">Next</a></div>
-            </div>
-            
-			<hr style="margin-bottom: 0px;    margin-top: 3rem;">
-            <div class="subtitle is-6 has-text-centered" style="margin-bottom: 0rem; margin-top:0.3rem;   color: white;    font-size: 0.85rem;">
-              You are connected to : <b><text id="otherUser" >Name</text></b><hr>
-			  <div class="subtitle has-text-centered" id="timer" style="color: white;    font-size: 0.8rem;"></div>
-            </div>
-            </div>
-			
-			<div id="msgContainer"></div>
-            <div class="field has-addons" id="keyboard">
-              <div class="control add-control">
-                <input id="inputText" type="text" class="input" placeholder="Type Message Here" required />
+            <div class="navigation" id="simpleNavbar" style="margin-left: 3px;">
+              <div style="text-align: left;">
+                <a
+                  class="button is-danger"
+                  id="exitBtn"
+                  style="background-color: #009cc4; border: 1px solid white; border-radius: 25px;"
+                  >Back</a
+                >
               </div>
-              <div class="control">
-                <div class="buttons has-addons">
-				
-                  <button class="button" id="cameraBtn"><i style="font-size:24px; color: #009CC4;" class="fa">&#xf030;</i></button>
-                  <button class="button" id="btnSend"><i style="font-size:24px; color: #009CC4;" class="fa">&#xf1d9;</i></button>
-                </div>
+              <div class="container has-text-centered">
+                <img src="1.png" style="height: 40px; margin-top: 2px;" />
+              </div>
+
+              <div style="text-align: right;">
+                <a
+                  class="button is-success"
+                  id="nextBtn"
+                  style="background-color: #009cc4; border: 1px solid white; border-radius: 25px;"
+                  >Next</a
+                >
               </div>
             </div>
-          
+
+            <hr style="margin-bottom: 0px; margin-top: 3rem;" />
+            <div
+              class="subtitle is-6 has-text-centered"
+              style="margin-bottom: 0rem; margin-top: 0.3rem; color: white; font-size: 0.85rem;"
+            >
+              You are connected to : <b><text id="otherUser">Name</text></b>
+              <hr />
+              <div class="subtitle has-text-centered" id="timer" style="color: white; font-size: 0.8rem;"></div>
+            </div>
+          </div>
+
+          <div id="msgContainer"></div>
+          <div class="field has-addons" id="keyboard">
+            <div class="control add-control">
+              <input id="inputText" type="text" class="input" placeholder="Type Message Here" required />
+            </div>
+            <div class="control">
+              <div class="buttons has-addons">
+                <button class="button" id="cameraBtn">
+                  <i style="font-size: 24px; color: #009cc4;" class="fa">&#xf030;</i>
+                </button>
+                <button class="button" id="btnSend">
+                  <i style="font-size: 24px; color: #009cc4;" class="fa">&#xf1d9;</i>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -124,7 +194,7 @@
       <button class="delete" id="close_btn"></button>
       <div></div>
     </div>
-    
+
     <div class="modal" id="modal">
       <div class="modal-background"></div>
       <div class="modal-content">
@@ -134,13 +204,14 @@
         </div>
       </div>
     </div>
-	
-	<div class="modal" id="modal1">
+
+    <div class="modal" id="modal1">
       <div class="modal-background"></div>
       <div class="modal-content">
         <div class="box">
-          <h6 class="title is-4 is-spaced has-text-centered">Terms of services</h6><br>
-		  <pre><p class="p">This Terms of Service Agreement (hereinafter "Agreement") sets forth the terms and conditions by which we, IT'S TIME LLC, provide the owlmonks.com Application Services to site visitors, users. By visiting our site, using any of the tools and services provided via our site, you thereby agree to be bound by each of the terms and conditions of this Agreement.
+          <h6 class="title is-4 is-spaced has-text-centered">Terms of services</h6>
+          <br />
+          <pre><p class="p">This Terms of Service Agreement (hereinafter "Agreement") sets forth the terms and conditions by which we, IT'S TIME LLC, provide the owlmonks.com Application Services to site visitors, users. By visiting our site, using any of the tools and services provided via our site, you thereby agree to be bound by each of the terms and conditions of this Agreement.
 
 We may automatically amend this Agreement at any time by informing you of the amended terms. For user to owlmonks.com it is their responsibility to read this Terms of Service each time they access any portion of our site. Any usage of this site by you, including merely viewing our home page or any page published on our site, as an unregistered owlmonks.com user, means that you agree to be bound by each and every one of the terms and conditions of this Terms of Service Agreement.
 
@@ -164,9 +235,10 @@ post any Content that violates or infringes anyone rights, including rights of p
 post any Content that is hate speech, threatening, sexually explicit or pornographic; incites violence; or contains nudity or graphic or gratuitous violence.
 post any Content that promotes racism, bigotry, hatred or physical harm of any kind against any group or individual.
 </p></pre>
-<br><br>
-<h6 class="title is-4 is-spaced has-text-centered">Privacy Policy</h6><br>
-<pre><p class="p">Who we are?
+          <br /><br />
+          <h6 class="title is-4 is-spaced has-text-centered">Privacy Policy</h6>
+          <br />
+          <pre><p class="p">Who we are?
 owlmonks.com
 
 INTRODUCTION
@@ -200,16 +272,16 @@ Company may modify or update this Privacy Policy from time to time to reflect th
 
 This privacy policy was last modified on August 1, 2020.
 
-</p></pre><br>
-<div class="container has-text-centered">
-		  <button class="button" id="ctn">Continue</button></div>
+</p></pre>
+          <br />
+          <div class="container has-text-centered">
+            <button class="button" id="ctn">Continue</button>
+          </div>
         </div>
       </div>
     </div>
-	
-	
-	
-<div class="modal" id="modal-bis">
+
+    <div class="modal" id="modal-bis">
       <div class="modal-background has-background-grey-lighter"></div>
       <div class="modal-content">
         <div class="columns">
@@ -246,23 +318,23 @@ This privacy policy was last modified on August 1, 2020.
       <div class="modal-content">
         <div class="box">
           <h5 class="title is-4 is-spaced has-text-centered">Are you sure you want to exit this page?</h5>
-		  <div class="container has-text-centered">
-          <button class="button is-danger" id="exit">Yes</button>
-          <button class="button" id="cancel-exit">Cancel</button></div>
+          <div class="container has-text-centered">
+            <button class="button is-danger" id="exit">Yes</button>
+            <button class="button" id="cancel-exit">Cancel</button>
+          </div>
         </div>
       </div>
     </div>
-	
-	
-	
+
     <div class="modal" id="modal-quar">
       <div class="modal-background"></div>
       <div class="modal-content">
         <div class="box">
           <h5 class="title is-4 is-spaced has-text-centered">Are you sure you want to leave this page?</h5>
-		  <div class="container has-text-centered">
-          <button class="button is-danger" id="next">Yes</button>
-          <button class="button" id="cancel-next">Cancel</button></div>
+          <div class="container has-text-centered">
+            <button class="button is-danger" id="next">Yes</button>
+            <button class="button" id="cancel-next">Cancel</button>
+          </div>
         </div>
       </div>
     </div>

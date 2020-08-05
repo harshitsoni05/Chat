@@ -1,17 +1,19 @@
 const express = require("express");
-const https = require("https");
+const http = require("http");
 const app = new express();
-const server = https.createServer(app);
+const server = http.createServer(app);
 const io = require("socket.io")(server);
 const path = require("path");
+require("dotenv").config();
 
-const { pairedUser } = require("./db");
+const { pairedUser, lostIds: disconnectedIds } = require("./db");
 
 const PORT = process.env.PORT || 3000;
-const priorityQuque = [];
+const priorityQueue = [];
 let userCount = 0;
 let pairCount = 0;
 const sockets = {};
+var timer;
 
 app.use(express.static(path.resolve(__dirname, "../build")));
 
@@ -30,19 +32,23 @@ io.sockets.on("connection", function (socket) {
     socket.isPaired = false;
     socket.pairCount = "";
     socket.otherUserId = "";
-    priorityQuque.push(socket.id);
+    priorityQueue.push(socket.id);
     socket.emit("loginSuccess");
     findPairForUser();
   });
-  //user leaves
+  //user leaves or closes the browser tab or internet disconnect
   socket.on("disconnect", function () {
-    if ("id" in socket) {
+    if ("isPaired" in socket) {
       if (socket.isPaired) {
         pairedUser.del(socket.pairCount);
         const otherUserSocket = sockets[socket.otherUserId];
-        otherUserSocket.emit("notification", "Your Partner left.", "danger");
-        delete sockets[socket.id];
-        cleanupPair(otherUserSocket);
+        otherUserSocket.emit("notification", "Reconnecting ...", "info");
+        timer = setTimeout(() => {
+          // wait for 5000 ms for partner to join
+          otherUserSocket.emit("notification", "Your Partner left.", "danger");
+          cleanupPair(otherUserSocket);
+          delete sockets[socket.id];
+        }, 10000);
       } else {
         delete sockets[socket.id];
       }
@@ -55,7 +61,33 @@ io.sockets.on("connection", function (socket) {
     const otherUserSocket = sockets[socket.otherUserId];
     otherUserSocket.emit("newMsg", socket.nickname, msg);
   });
-
+  socket.on("previous id", ({ id: Id, nickname }) => {
+    // delete previous socket
+    if (Id in sockets) {
+      // clear timer
+      clearTimeout(timer);
+      // id persists and response time < 5000ms
+      const otherSocketId = sockets[Id].otherUserId;
+      if (sockets[otherSocketId].isPaired) {
+        socket.nickname = nickname;
+        // cleanup previous socket
+        delete sockets[Id];
+        // register new socket
+        sockets[socket.id] = socket;
+        cleanupPair(socket);
+        cleanupPair(sockets[otherSocketId]);
+        pairing(socket.id, otherSocketId, false);
+        sockets[socket.otherUserId].emit("remove notification");
+      }
+    } else {
+      if (typeof Id !== "undefined") {
+        sockets[socket.id] = socket;
+        socket.nickname = nickname;
+        cleanupPair(socket);
+        socket.emit("notification", "You are disconnected", "danger");
+      }
+    }
+  });
   socket.on("findAnotherPair", () => {
     if (socket.isPaired) {
       pairedUser.del(socket.pairCount);
@@ -63,12 +95,12 @@ io.sockets.on("connection", function (socket) {
       sockets[socket.otherUserId].emit("notification", "Your Partner left.", "danger");
       cleanupPair(socket);
     }
-    priorityQuque.push(socket.id);
+    priorityQueue.push(socket.id);
     findPairForUser();
   });
 
   socket.on("getMeOut", () => {
-    if(socket.isPaired){
+    if (socket.isPaired) {
       pairedUser.del(socket.pairCount);
       cleanupPair(sockets[socket.otherUserId]);
       sockets[socket.otherUserId].emit("notification", "Your Partner left.", "danger");
@@ -81,30 +113,34 @@ io.sockets.on("connection", function (socket) {
     if (socket.isPaired) {
       pairedUser.del(socket.pairCount);
       cleanupPair(sockets[socket.otherUserId]);
-      sockets[socket.otherUserId].emit("notification", "Your time has ended.","danger");
+      sockets[socket.otherUserId].emit("notification", "Your time has ended.", "danger");
       cleanupPair(socket);
-      socket.emit("notification", "Your time has ended.","danger");
+      socket.emit("notification", "Your time has ended.", "danger");
     }
   });
-  
+
   function findPairForUser() {
-    while (priorityQuque.length > 1) {
-      if (pairedUser.set(pairCount, [priorityQuque[0], priorityQuque[1]], 0)) {
-        const userSocket = sockets[priorityQuque[0]];
-        const otherUserSocket = sockets[priorityQuque[1]];
-        pairCount++;
-        prepareForPairing(userSocket, otherUserSocket);
-        prepareForPairing(otherUserSocket, userSocket);
-        priorityQuque.splice(0, 2);
-      }
+    while (priorityQueue.length > 1) {
+      pairing(priorityQueue[0], priorityQueue[1]);
     }
   }
 
-  function prepareForPairing(e, f) {
+  function pairing(s1, s2, bool) {
+    if (pairedUser.set(pairCount, [s1, s2], 0)) {
+      const userSocket = sockets[s1];
+      const otherUserSocket = sockets[s2];
+      pairCount++;
+      prepareForPairing(userSocket, otherUserSocket, bool);
+      prepareForPairing(otherUserSocket, userSocket, bool);
+      priorityQueue.splice(0, 2);
+    }
+  }
+
+  function prepareForPairing(e, f, bool = true) {
     e.isPaired = true;
     e.pairCount = pairCount;
     e.otherUserId = f.id;
-    e.emit("gotAPair", e.nickname, f.nickname);
+    bool && e.emit("gotAPair", e.nickname, f.nickname);
   }
 
   function cleanupPair(e) {
