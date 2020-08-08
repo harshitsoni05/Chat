@@ -40,8 +40,8 @@ io.sockets.on("connection", function (socket) {
   socket.on("disconnect", function () {
     if ("isPaired" in socket) {
       if (socket.isPaired) {
-        pairedUser.del(socket.pairCount);
         const otherUserSocket = sockets[socket.otherUserId];
+        pairedUser.del(socket.pairCount);
         otherUserSocket.emit("notification", "Reconnecting ...", "info");
         timer = setTimeout(() => {
           // wait for 5000 ms for partner to join
