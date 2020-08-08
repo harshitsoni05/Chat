@@ -32,6 +32,7 @@ io.sockets.on("connection", function (socket) {
     socket.isPaired = false;
     socket.pairCount = "";
     socket.otherUserId = "";
+	console.log(`socket.otherUserId 1 : ${socket.otherUserId}`);
     priorityQueue.push(socket.id);
     socket.emit("loginSuccess");
     findPairForUser();
@@ -41,6 +42,7 @@ io.sockets.on("connection", function (socket) {
     if ("isPaired" in socket) {
       if (socket.isPaired) {
         const otherUserSocket = sockets[socket.otherUserId];
+		console.log(`sockets[socket.otherUserId] 2 : ${otherUserSocket}`);
         pairedUser.del(socket.pairCount);
         otherUserSocket.emit("notification", "Reconnecting ...", "info");
         timer = setTimeout(() => {
@@ -59,6 +61,7 @@ io.sockets.on("connection", function (socket) {
   //new message get
   socket.on("postMsg", function (msg) {
     const otherUserSocket = sockets[socket.otherUserId];
+	console.log(`sockets[socket.otherUserId] 3 : ${otherUserSocket}`);
     otherUserSocket.emit("newMsg", socket.nickname, msg);
   });
   socket.on("previous id", ({ id: Id, nickname }) => {
@@ -68,6 +71,8 @@ io.sockets.on("connection", function (socket) {
       clearTimeout(timer);
       // id persists and response time < 5000ms
       const otherSocketId = sockets[Id].otherUserId;
+	  	console.log(`sockets[id].otherUserId 4.1 : ${otherSocketId}`);
+			console.log(`sockets[otherSocketId] 4.2 : ${sockets[otherSocketId]}`);
       if (sockets[otherSocketId].isPaired) {
         socket.nickname = nickname;
         // cleanup previous socket
@@ -77,6 +82,7 @@ io.sockets.on("connection", function (socket) {
         cleanupPair(socket);
         cleanupPair(sockets[otherSocketId]);
         pairing(socket.id, otherSocketId, false);
+			console.log(`sockets[socket.otherUserId] 4.3 : ${sockets[socket.otherUserId]}`);
         sockets[socket.otherUserId].emit("remove notification");
       }
     } else {
@@ -91,6 +97,7 @@ io.sockets.on("connection", function (socket) {
   socket.on("findAnotherPair", () => {
     if (socket.isPaired) {
       pairedUser.del(socket.pairCount);
+	  console.log(`sockets[socket.otherUserId] 5 : ${sockets[socket.otherUserId]}`);
       cleanupPair(sockets[socket.otherUserId]);
       sockets[socket.otherUserId].emit("notification", "Your Partner left.", "danger");
       cleanupPair(socket);
@@ -102,6 +109,7 @@ io.sockets.on("connection", function (socket) {
   socket.on("getMeOut", () => {
     if (socket.isPaired) {
       pairedUser.del(socket.pairCount);
+	  console.log(`sockets[socket.otherUserId] 6 : ${sockets[socket.otherUserId]}`);
       cleanupPair(sockets[socket.otherUserId]);
       sockets[socket.otherUserId].emit("notification", "Your Partner left.", "danger");
       cleanupPair(socket);
@@ -112,6 +120,7 @@ io.sockets.on("connection", function (socket) {
   socket.on("timer expired", () => {
     if (socket.isPaired) {
       pairedUser.del(socket.pairCount);
+	  console.log(`sockets[socket.otherUserId] 7 : ${sockets[socket.otherUserId]}`);
       cleanupPair(sockets[socket.otherUserId]);
       sockets[socket.otherUserId].emit("notification", "Your time has ended.", "danger");
       cleanupPair(socket);
@@ -129,6 +138,7 @@ io.sockets.on("connection", function (socket) {
     if (pairedUser.set(pairCount, [s1, s2], 0)) {
       const userSocket = sockets[s1];
       const otherUserSocket = sockets[s2];
+	  console.log(`otherUserSocket 8 : ${sockets[s2]}`);
       pairCount++;
       prepareForPairing(userSocket, otherUserSocket, bool);
       prepareForPairing(otherUserSocket, userSocket, bool);
@@ -137,6 +147,8 @@ io.sockets.on("connection", function (socket) {
   }
 
   function prepareForPairing(e, f, bool = true) {
+	  console.log(`e 9.1 : ${e}`);
+	  console.log(`f 9.2 : ${f}`);
     e.isPaired = true;
     e.pairCount = pairCount;
     e.otherUserId = f.id;
@@ -144,6 +156,7 @@ io.sockets.on("connection", function (socket) {
   }
 
   function cleanupPair(e) {
+	  console.log(`e 10 : ${e}`);
     e.isPaired = false;
     e.pairCount = "";
     e.otherUserId = "";
