@@ -130,7 +130,7 @@ class Chat {
       }
     });
 
-    this.socket.on("newMsg", (user, msg) => {
+    this.socket.on("newMsg", function (user, msg) {
       that._displayNewMsg(user, msg, "left");
     });
 

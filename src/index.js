@@ -57,10 +57,10 @@ io.sockets.on("connection", function (socket) {
     socket.broadcast.emit("system", userCount);
   });
   //new message get
-  socket.on("postMsg", function (msg){
+  socket.on("postMsg", function (msg) {
     const otherUserSocket = sockets[socket.otherUserId];
     otherUserSocket.emit("newMsg", socket.nickname, msg);
-  };
+  });
   socket.on("previous id", ({ id: Id, nickname }) => {
     // delete previous socket
     if (Id in sockets) {
