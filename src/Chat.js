@@ -125,9 +125,7 @@ class Chat {
     this.socket.on("notification", (msg, code) => {
       displayNotification(msg, code);
       clearTimer();
-      if (msg == "Your Partner left." || msg == "Your time has ended." || msg == "You are disconnected") {
-        keyboard.style.display = "none";
-      }
+      
     });
 
     this.socket.on("newMsg", function (user, msg) {
