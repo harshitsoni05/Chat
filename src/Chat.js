@@ -126,7 +126,7 @@ class Chat {
       displayNotification(msg, code);
       clearTimer();
       if (msg == "Your Partner left." || msg == "Your time has ended." || msg == "You are disconnected") {
-        keyboard.style.display = "block";
+        keyboard.style.display = "none";
       }
     });
 
