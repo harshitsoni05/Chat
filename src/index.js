@@ -139,7 +139,8 @@ io.sockets.on("connection", function (socket) {
     if (pairedUser.set(pairCount, [s1, s2], 0)) {
       const userSocket = sockets[s1];
       const otherUserSocket = sockets[s2];
-	  console.log(`otherUserSocket 8 : ${sockets[s2]}`);
+	  console.log(`userSocket 8.1 : ${sockets[s1]}`);
+	  console.log(`otherUserSocket 8.2 : ${sockets[s2]}`);
       pairCount++;
       prepareForPairing(userSocket, otherUserSocket, bool);
       prepareForPairing(otherUserSocket, userSocket, bool);
