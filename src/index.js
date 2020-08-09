@@ -50,11 +50,11 @@ io.sockets.on("connection", function (socket) {
           otherUserSocket.emit("notification", "Your Partner left.", "danger");
           cleanupPair(otherUserSocket);
           delete sockets[socket.id];
-		  priorityQueue.splice(priorityQueue.length, 1);
+		  priorityQueue.splice(0, 1);
         }, 10000);
       } else {
         delete sockets[socket.id];
-		priorityQueue.splice(priorityQueue.length, 1);
+		priorityQueue.splice(0, 1);
       }
     }
     userCount--;
