@@ -32,7 +32,7 @@ io.sockets.on("connection", function (socket) {
     socket.isPaired = false;
     socket.pairCount = "";
     socket.otherUserId = "";
-	console.log(`socket.otherUserId 1 : ${socket.otherUserId}`);
+	console.log(`socket.otherUserId 1 :  ${socket.otherUserId}`);
     priorityQueue.push(socket.id);
     socket.emit("loginSuccess");
     findPairForUser();
