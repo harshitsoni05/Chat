@@ -87,16 +87,14 @@ class Chat {
       if (info.style.display == "block") {
         info.style.display = "none";
       }
-      overlayBtn.classList.add("is-loading");
+      //overlayBtn.classList.add("is-loading");
       modal.classList.add("is-active");
     });
 
     this.socket.on("gotAPair", (user, otherUser) => {
       firstTime = false;
       notification.style.display = "none";
-      [modal, overlayBtn].forEach((e) => {
-        e.classList.remove("is-active");
-      });
+      
       mainPage.style.display = "block";
       navbar.style.display = "flex";
       landingPage.style.display = "none";
