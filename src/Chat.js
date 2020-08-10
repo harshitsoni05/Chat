@@ -154,9 +154,7 @@ class Chat {
       displayMessageOnLogin("");
     });
 
-    overlayBtn.addEventListener(
-      "click",
-      () => {
+    overlayBtn.onclick= function () {
         var nickName = document.getElementById("name").value;
         if (nickName.trim().length != 0) {
 		  that.socket.emit("login", nickName);
@@ -165,7 +163,7 @@ class Chat {
         }
       },
       false
-    );
+    ;
 
     document.getElementById("close_btn").addEventListener("click", () => {
       notification.style.display = "none";
