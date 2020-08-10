@@ -88,7 +88,7 @@ class Chat {
       if (info.style.display == "block") {
         info.style.display = "none";
       }
-      //overlayBtn.classList.add("is-loading");
+      overlayBtn.classList.add("is-loading");
 	  
       modal.classList.add("is-active");
     });
@@ -96,9 +96,9 @@ class Chat {
     this.socket.on("gotAPair", (user, otherUser) => {
       firstTime = false;
       notification.style.display = "none";
-      
-        document.getElementById("modal").classList.remove("is-active");
-      
+      [modal, overlayBtn].forEach((e) => {
+        e.classList.remove("is-active");
+      });
       mainPage.style.display = "block";
       navbar.style.display = "flex";
       landingPage.style.display = "none";
@@ -139,7 +139,6 @@ class Chat {
 
     nextBtn.addEventListener("click", () => {
       document.getElementById("modal-quar").classList.remove("is-active");
-	  overlayBtn.disabled = false;
       that.socket.emit("findAnotherPair");
       modal.classList.add("is-active");
       // clear your timer
@@ -161,7 +160,6 @@ class Chat {
         var nickName = document.getElementById("name").value;
         if (nickName.trim().length != 0) {
 		  that.socket.emit("login", nickName);
-		  overlayBtn.disabled = true;
 		  } else {
           document.getElementById("name").focus();
         }
