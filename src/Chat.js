@@ -170,7 +170,10 @@ class Chat {
     document.getElementById("close_btn").addEventListener("click", () => {
       notification.style.display = "none";
     });
-    document.getElementById("name").addEventListener("keyup", loginHandler, false);
+    //document.getElementById("name").addEventListener("keyup", loginHandler, false);
+	document.getElementById('name').addEventListener('keydown', function(k){
+    if(k.keyCode == 13) return false;
+});
     document.getElementById("btnSend").addEventListener("click", sendMessageHander, false);
     messageInput.addEventListener("keyup", sendMessageHander, false);
     messageInput.addEventListener("input", () => {
@@ -216,14 +219,7 @@ class Chat {
       const div = document.querySelector("#notification div");
       div.textContent = "";
     }
-    function loginHandler(e) {
-      if (isNaN(Number(e.keyCode)) || e.keyCode === 13) {
-        var nickName = document.getElementById("name").value;
-        if (nickName.trim().length != 0) {
-          that.socket.emit("login", nickName);
-        }
-      }
-    }
+    
 
     function sendMessageHander(e) {
       var msg = messageInput.value;
