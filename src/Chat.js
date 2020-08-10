@@ -88,7 +88,7 @@ class Chat {
         info.style.display = "none";
       }
       overlayBtn.classList.add("is-loading");
-	  overlayBtn.disabled = true;
+	  
       modal.classList.add("is-active");
     });
 
@@ -153,9 +153,10 @@ class Chat {
       displayMessageOnLogin("");
     });
 
-    document.getElementById("overlayBtn").addEventListener(
+    overlayBtn.addEventListener(
       "click",
       () => {
+		  overlayBtn.disabled = true;
         var nickName = document.getElementById("name").value;
         if (nickName.trim().length != 0) {
           that.socket.emit("login", nickName);
