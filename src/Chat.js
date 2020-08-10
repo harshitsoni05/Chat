@@ -26,7 +26,7 @@ class Chat {
     const displayedPic = document.getElementById("photo");
     const keyboard = document.getElementById("keyboard");
     const timerHTML = document.getElementById("timer");
-	let i=0;
+	static let i=0;
 
     tc.addEventListener("click", () => {
       document.getElementById("modal1").classList.add("is-active");
@@ -158,10 +158,10 @@ class Chat {
       "click",
       () => {
         var nickName = document.getElementById("name").value;
-        if (nickName.trim().length != 0 && i===0) {
-          that.socket.emit("login", nickName);
-		  i=i+1;
-        } else {
+        if (nickName.trim().length != 0 && i==0) {
+          i=i+1;
+		  that.socket.emit("login", nickName);
+		  } else {
           document.getElementById("name").focus();
         }
       },
