@@ -100,7 +100,7 @@ class Chat {
       mainPage.style.display = "block";
       navbar.style.display = "flex";
       landingPage.style.display = "none";
-	  this._removeChild(document.getElementById("msgContainer"));
+	  that._removeChild(document.getElementById("msgContainer"));
 	  document.getElementById("msgContainer")="";
       if (keyboard.style.display == "none") {
         keyboard.style.display = "flex";
