@@ -95,9 +95,9 @@ class Chat {
     this.socket.on("gotAPair", (user, otherUser) => {
       firstTime = false;
       notification.style.display = "none";
-      
+      [modal, overlayBtn].forEach((e) => {
         e.classList.remove("is-active");
-      
+      });
       mainPage.style.display = "block";
       navbar.style.display = "flex";
       landingPage.style.display = "none";
