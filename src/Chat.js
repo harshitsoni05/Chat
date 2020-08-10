@@ -174,6 +174,9 @@ class Chat {
 	document.getElementById('name').addEventListener('keydown', function(k){
     if(k.keyCode == 13) return false;
 });
+document.getElementById('modal').addEventListener('keydown', function(k){
+    if(k.keyCode == 13) return false;
+});
     document.getElementById("btnSend").addEventListener("click", sendMessageHander, false);
     messageInput.addEventListener("keyup", sendMessageHander, false);
     messageInput.addEventListener("input", () => {
