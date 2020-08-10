@@ -132,17 +132,17 @@
               position: fixed;
               width: -webkit-fill-available;
               background-color: #009cc4;
-              left: 2px;
-              right: 2px;
               top: 0px;
+    left: 0px;
+    right: 0px
             "
           >
-            <div class="navigation" id="simpleNavbar" style="margin-left: 3px;">
+            <div class="navigation" id="simpleNavbar" style="width: 100%;">
               <div style="text-align: left;">
                 <a
                   class="button is-danger"
                   id="exitBtn"
-                  style="background-color: #009cc4; border: 1px solid white; border-radius: 25px;"
+                  style="background-color: #009cc4; border: 1px solid white; border-radius: 25px;    margin-left: 4px;"
                   >Back</a
                 >
               </div>
@@ -154,7 +154,7 @@
                 <a
                   class="button is-success"
                   id="nextBtn"
-                  style="background-color: #009cc4; border: 1px solid white; border-radius: 25px;"
+                  style="background-color: #009cc4; border: 1px solid white; border-radius: 25px;margin-right: 4px;"
                   >Next</a
                 >
               </div>
@@ -166,13 +166,15 @@
               style="margin-bottom: 0rem; margin-top: 0.3rem; color: white; font-size: 0.85rem;"
             >
               You are connected to : <b><text id="otherUser">Name</text></b>
-              <hr />
+              <hr style="margin: 0.3rem;"/>
               <div class="subtitle has-text-centered" id="timer" style="color: white; font-size: 0.8rem;"></div>
             </div>
           </div>
 
-          <div id="msgContainer"></div>
-          <div class="field has-addons" id="keyboard">
+          <div id="msgContainer" style="margin-top: 60px;
+    margin-bottom: 1.5rem;"></div>
+          <div class="field has-addons" id="keyboard" style="    right: 1px;
+    left: 1px;">
             <div class="control add-control">
               <input id="inputText" type="text" class="input" placeholder="Type Message Here" required />
             </div>

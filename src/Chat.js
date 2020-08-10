@@ -285,9 +285,9 @@ class Chat {
           if (leftMsg.length == 0 || leftLastChild.textContent === `${user}: typing...`) {
             // remove typing child
             container.removeChild(leftLastChild);
-            html = `<div class="talk-bubble1 tri-left round left-in"><div class="talktext1"><span class="span">${msg.msg}</span></div></div>`;
+            html = `<div class="talk-bubble1 tri-left round left-in" style="max-width: 80%; display: inline-block;"><div class="talktext1" style="overflow-wrap: break-word;"><span class="span">${msg.msg}</span></div></div>`;
           } else {
-            html = `<div class="talk-bubble1 tri-left round left-in"><div class="talktext1"><span class="span">${msg.msg}</span></div></div>`;
+            html = `<div class="talk-bubble1 tri-left round left-in" style="max-width: 80%; display: inline-block;"><div class="talktext1" style="overflow-wrap: break-word;"><span class="span">${msg.msg}</span></div></div>`;
           }
           HTML.innerHTML = html;
           container.appendChild(HTML);
@@ -305,7 +305,7 @@ class Chat {
         img.src = msg.img;
       } else {
         ["has-text-right", "is-size-6", "right-aligned"].forEach((e) => HTML.classList.add(e));
-        HTML.innerHTML = `<div class="talk-bubble tri-right round right-in"><div class="talktext"><span class="span">${msg.msg}</span></div></div>`;
+        HTML.innerHTML = `<div class="talk-bubble tri-right round right-in" style="max-width: 80%; display: inline-block;"><div class="talktext" style="overflow-wrap: break-word;"><span class="span">${msg.msg}</span></div></div>`;
         container.appendChild(HTML);
       }
     }
