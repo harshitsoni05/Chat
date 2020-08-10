@@ -261,7 +261,7 @@ class Chat {
     let HTML = document.createElement("div");
 
     if (direction === "left") {
-      ["has-text-left", "is-size-6", "left-aligned"].forEach((e) => HTML.classList.add(e));
+      ["has-text-left", "is-size-8", "left-aligned"].forEach((e) => HTML.classList.add(e));
       let html;
       const leftMsg = document.querySelectorAll(".left-aligned");
       const leftLastChild = leftMsg[leftMsg.length - 1];
@@ -304,7 +304,7 @@ class Chat {
         };
         img.src = msg.img;
       } else {
-        ["has-text-right", "is-size-6", "right-aligned"].forEach((e) => HTML.classList.add(e));
+        ["has-text-right", "is-size-8", "right-aligned"].forEach((e) => HTML.classList.add(e));
         HTML.innerHTML = `<div class="talk-bubble tri-right round right-in" style="max-width: 80%; display: inline-block;"><div class="talktext" style="overflow-wrap: break-word;"><span class="span">${msg.msg}</span></div></div>`;
         container.appendChild(HTML);
       }
