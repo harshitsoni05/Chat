@@ -156,7 +156,6 @@ class Chat {
     overlayBtn.addEventListener(
       "click",
       () => {
-		  overlayBtn.disabled = true;
         var nickName = document.getElementById("name").value;
         if (nickName.trim().length != 0) {
           that.socket.emit("login", nickName);
@@ -164,7 +163,7 @@ class Chat {
           document.getElementById("name").focus();
         }
       },
-      false
+      true
     );
 
     document.getElementById("close_btn").addEventListener("click", () => {
