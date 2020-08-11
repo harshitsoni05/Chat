@@ -247,7 +247,7 @@ overlayBtn.addEventListener('keydown', function(k){
       landingPage.style.display = "block";
       navbar.style.display = "none";
       overlayBtn.classList.remove("is-loading");
-      overlayBtn.textContent = "Start";
+      overlayBtn.textContent = "START";
       if (info.style.display === "none") {
         const innerHTML = `<span class="span">${msg}</span>`;
         info.innerHTML = innerHTML;
