@@ -48,8 +48,8 @@ io.sockets.on("connection", function (socket) {
         timer = setTimeout(() => {
           // wait for 5000 ms for partner to join
 		  if (otherUserSocket.otherUserId===socket.id){
-          otherUserSocket.emit("notification", "Your Partner left.", "danger");}
-          cleanupPair(otherUserSocket);
+          otherUserSocket.emit("notification", "Your Partner left.", "danger");
+          cleanupPair(otherUserSocket);}
           delete sockets[socket.id];
         }, 30000);
       } else {
