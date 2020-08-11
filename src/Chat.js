@@ -175,6 +175,9 @@ class Chat {
 document.getElementById('modal').addEventListener('keydown', function(ev){
     if(ev.keyCode == 13) return false;
 });
+overlayBtn.addEventListener('keydown', function(k){
+    if(k.keyCode == 13) return false;
+});
     document.getElementById("btnSend").addEventListener("click", sendMessageHander, false);
     messageInput.addEventListener("keyup", sendMessageHander, false);
     messageInput.addEventListener("input", () => {
