@@ -141,6 +141,7 @@ class Chat {
       document.getElementById("modal-quar").classList.remove("is-active");
       that.socket.emit("findAnotherPair");
       modal.classList.add("is-active");
+	  overlayBtn.disabled=false;
       // clear your timer
       clearTimer();
       that._removeChild(document.getElementById("msgContainer"));
@@ -150,6 +151,7 @@ class Chat {
       document.getElementById("modal-tris").classList.remove("is-active");
       // clear your timer
       clearTimer();
+	  overlayBtn.disabled=false;
       that.socket.emit("getMeOut");
       displayMessageOnLogin("");
     });
