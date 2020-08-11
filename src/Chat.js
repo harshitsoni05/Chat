@@ -157,6 +157,7 @@ class Chat {
     overlayBtn.onclick= function () {
         var nickName = document.getElementById("name").value;
         if (nickName.trim().length != 0) {
+			overlayBtn.disabled=true;
 		  that.socket.emit("login", nickName);
 		  } else {
           document.getElementById("name").focus();
