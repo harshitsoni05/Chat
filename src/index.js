@@ -47,10 +47,11 @@ io.sockets.on("connection", function (socket) {
         otherUserSocket.emit("notification", "Reconnecting ...", "info");
         timer = setTimeout(() => {
           // wait for 5000 ms for partner to join
-          otherUserSocket.emit("notification", "Your Partner left.", "danger");
+		  if (otherUserSocket.otherUserId===socket.id){
+          otherUserSocket.emit("notification", "Your Partner left.", "danger");}
           cleanupPair(otherUserSocket);
           delete sockets[socket.id];
-        }, 10000);
+        }, 30000);
       } else {
         delete sockets[socket.id];
 		priorityQueue.splice(0, 1);
